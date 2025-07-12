@@ -22,7 +22,7 @@ const RecentMagzines = () => {
         <h2 className="text-2xl font-semibold mb-4">This month</h2>
         <div className="text-[#202020] ">
           Lorem Ipsum&apos;is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
           scrambled it to make a type specimen book.
           <br></br>
@@ -30,14 +30,14 @@ const RecentMagzines = () => {
 
           Lorem Ipsum&apos;is simply dummy
           text of the printing and typesetting industry. Lorem Ipsum has been
-          the industry's standard dummy text ever since the 1500s, when an
+          the industry&apos;s standard dummy text ever since the 1500s, when an
           unknown printer took a galley of type and scrambled it to make a type
           specimen book.
           <br></br>
           <br></br>
 
           Lorem Ipsum&apos;is simply dummy text of the printing and
-          typesetting industry. Lorem Ipsum has been the industry's standard
+          typesetting industry. Lorem Ipsum has been the industry&apos;s standard
           dummy text ever since the 1500s, when an unknown printer took a galley
           of type and scrambled it to make a type specimen book.
         </div>
