@@ -44,3 +44,29 @@ body {
 .primary-button {
   @apply py-4 px-6 bg-[#22CA38] hover:bg-[#22CA38]/[50%] cursor-pointer transition-all delay-100 ease-in-out mt-10 font-semibold text-white rounded-md flex justify-center items-center
 }
+
+
+/* Swiper fade effect fix */
+.swiper-slide {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.swiper-slide.swiper-slide-active {
+  opacity: 1 !important;
+  z-index: 1;
+}
+
+/* Custom Pagination Dots */
+.custom-pagination .swiper-pagination-bullet {
+  width: 14px;
+  height: 14px;
+  background-color: #22c55e;
+  opacity: 0.5;
+  transition: all 0.3s ease-in-out;
+  border-radius: 50%;
+}
+.custom-pagination .swiper-pagination-bullet-active {
+  transform: scale(1.4);
+  opacity: 1;
+  background-color: #15803d;
+}

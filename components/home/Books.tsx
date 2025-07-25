@@ -4,6 +4,7 @@ import Link from "next/link";
 export interface Books {
   title: string;
   imageSrc: string;
+  link:string
 }
 
 interface BooksSectionProps {
@@ -17,25 +18,39 @@ const Books = ({ data }: BooksSectionProps) => {
         Islamic Books
         <span className="block w-16 h-1 bg-green-500 mx-auto mt-2" />
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-10 xl:gap-16">
+      <div className="grid grid-cols-2 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-10 xl:gap-16">
         {data.map((_, index) => (
           <div
             key={index}
             className="  "
           >
-            <div className="max-w-[360px[">
+            <div className=" flex items-center justify-center">
+
+            <div className="w-[150px] h-[200px] md:max-w-[360px] md:h-[360px]">
               <Image
                 src={_.imageSrc}
                 alt={_.title}
                 width={400}
                 height={250}
-                className="w-full object-cover"
+                className="w-full  h-full"
               />
             </div>
+            </div>
+
+
             <div className="mt-5 flex flex-col  justify-between">
               <div>
-                <h3 className="text-lg font-semibold mb-2">{_.title}</h3>
+                <h3 className="text-sm md:text-lg font-semibold mb-2 truncate" title={_.title}>{_.title}</h3>
               </div>
+              <Link href={_.link} target="_blank" rel="noopener noreferrer">
+              <div
+                className="text-sm text-green-600 font-semibold hover:underline"
+              
+              >
+                
+              Download
+              </div>
+              </Link>
             </div>
           </div>
         ))}

@@ -3,19 +3,23 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { AlignJustify } from 'lucide-react';
 
 const Header: FC = () => {
   return (
-    <header className="bg-[#0F1110] shadow-md sticky top-0 z-50 flex justify-center">
+    <header className="bg-white  sticky top-0 z-50 flex justify-center">
       <div className=' px-5 md:px-10 2xl:px-0 py-5 max-w-[1600px] w-full'>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center gap-10 justify-between">
         <div className="flex items-center gap-4">
-          <Image src="/assets/Logo.svg" alt="IYF Logo" width={255} height={74} />
+          <div className='w-[150px] md:w-[255px]'>
+
+          <Image src="/assets/black-logo.svg" alt="IYF Logo" width={255} height={74} />
+          </div>
        
         </div>
-        <nav className='overflow-hidden'>
-          <ul className="flex items-center gap-6 font-medium text-white">
+        <nav className='overflow-hidden hidden md:block'>
+          <ul className="flex items-center gap-6 font-medium text-black">
             <li className='hover:text-[#22CA38]'><Link href="/">Home</Link></li>
             <li className='hover:text-[#22CA38]'><Link href="/about">About Us</Link></li>
             <li className='hover:text-[#22CA38]'><Link href="/media">Media</Link></li>
@@ -32,6 +36,10 @@ const Header: FC = () => {
             </li>
           </ul>
         </nav>
+
+        <div className='md:hidden'>
+        <AlignJustify />
+        </div>
       </div>
       </div>
 

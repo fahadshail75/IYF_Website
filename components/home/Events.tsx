@@ -18,13 +18,13 @@ const EventosSection: FC<EventosSectionProps> = ({ eventos }) => {
   return (
     <section className="  bg-white">
       <h2 className="text-2xl font-bold text-center mb-8">
-        Eventos
+      Events & Activities
         <span className="block w-16 h-1 bg-green-500 mx-auto mt-2" />
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {eventos.map((evento, index) => (
-          <div key={index} className="bg-white shadow-all border border-amber-50 rounded overflow-hidden p-4 md:p-8 max-w-448px]    ">
-            <div className='max-w-[416px]'>
+          <div key={index} className="bg-white shadow-all border border-amber-50 rounded overflow-hidden p-4 md:p-8    ">
+            <div className=' '>
 
             <Image
               src={evento.imageSrc}
