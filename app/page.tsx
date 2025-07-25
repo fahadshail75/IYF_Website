@@ -4,7 +4,7 @@ import Books from "@/components/home/Books";
 import CampaignsSection from "@/components/home/Campaign";
 import EventosSection from "@/components/home/Events";
 import MagzineSwiper from "@/components/home/MagzinesSlider";
-import RecentMagzines from "@/components/home/RecentMagzines";
+// import RecentMagzines from "@/components/home/RecentMagzines";
 import Image from "next/image";
 
 export default function Home() {
