@@ -79,7 +79,6 @@ export default function Home() {
   ];
   return (
     <>
-      <Header />
       <section className="">
         
 
@@ -129,7 +128,6 @@ export default function Home() {
         <Books data={books} />
       </section>
 
-      <Footer/>
     </>
   );
 }

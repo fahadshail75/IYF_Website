@@ -70,3 +70,8 @@ body {
   opacity: 1;
   background-color: #15803d;
 }
+
+
+.gradient-bg {
+  background: linear-gradient(to right, #22CA38 32%, #FFFFFF 100%);
+}
