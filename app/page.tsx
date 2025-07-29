@@ -1,5 +1,5 @@
-import Footer from "@/components/common/Footer";
-import Header from "@/components/common/Header";
+// import Footer from "@/components/common/Footer";
+// import Header from "@/components/common/Header";
 import Books from "@/components/home/Books";
 import CampaignsSection from "@/components/home/Campaign";
 import EventosSection from "@/components/home/Events";
