@@ -26,7 +26,7 @@ const Books = ({ data }: BooksSectionProps) => {
           >
             <div className=" flex items-center justify-center">
 
-            <div className="w-[150px] h-[200px] md:max-w-[360px] md:h-[360px]">
+            <div className="w-[150px] h-[200px] md:max-w-[360px] md:h-[360px] md:w-full">
               <Image
                 src={_.imageSrc}
                 alt={_.title}
