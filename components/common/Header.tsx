@@ -75,7 +75,7 @@ const Header: FC = () => {
 
   return (
     <header className="bg-white sticky top-0 z-50 flex justify-center shadow">
-      <div className="px-5 md:px-10 2xl:px-0 py-5 max-w-[1600px] w-full">
+      <div className="px-5 md:px-10 2xl:px-6 py-5 max-w-[1600px] w-full">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="w-[150px] md:w-[255px]">

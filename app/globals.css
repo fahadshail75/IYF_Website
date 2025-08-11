@@ -7,8 +7,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-monteserrat: var(--font-monteserrat);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,10 +16,19 @@
   }
 }
 
+
+@font-face {
+  font-family: 'JameelNooriNastaleeq';
+      src: url('/assets/fonts/JameelNooriNastaleeq-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:  var(--font-monteserrat);
 }
 
 
@@ -74,4 +82,9 @@ body {
 
 .gradient-bg {
   background: linear-gradient(to right, #22CA38 32%, #FFFFFF 100%);
+}
+
+
+.jameel-font {
+  font-family: 'JameelNooriNastaleeq', serif;
 }

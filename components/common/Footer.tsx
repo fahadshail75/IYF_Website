@@ -4,7 +4,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="bg-[#0F1110] flex justify-center">
-      <div className=" px-5 md:px-10 2xl:px-0 py-5 max-w-[1600px] w-full">
+      <div className=" px-5 md:px-10 2xl:px-6 py-5 max-w-[1600px] w-full">
         {/* top */}
         <div className="flex flex-col lg:flex-row md:flex-wrap xl:flex-nowrap gap-10 justify-between   py-10">
           <div className="">
@@ -74,32 +74,34 @@ const Footer = () => {
                 <Link href={"/"}>Home</Link>
               </li>
               <li className="text-white hover:underline hover:text-[#22CA38]">
-                <Link href={"/"}>About Us</Link>
+                <Link href={"/about-us"}>About Us</Link>
               </li>
               <li className="text-white hover:underline hover:text-[#22CA38]">
-                <Link href={"/"}>Media</Link>
+                <Link href={"/media"}>Media</Link>
               </li>
               <li className="text-white hover:underline hover:text-[#22CA38]">
-                <Link href={"/"}>Magazines</Link>
+                <Link href={"/magzines"}>Magazines</Link>
               </li>
               <li className="text-white hover:underline hover:text-[#22CA38]">
-                <Link href={"/"}>Courses</Link>
+                <Link href={"/courses"}>Courses</Link>
               </li>
               <li className="text-white hover:underline hover:text-[#22CA38]">
-                <Link href={"/"}>Departments</Link>
+                <Link href={"/departments"}>Departments</Link>
               </li>
               <li className="text-white hover:underline hover:text-[#22CA38]">
-                <Link href={"/"}>Learn Islam</Link>
+                <Link href={"/learn-islam"}>Learn Islam</Link>
               </li>
               <li className="text-white hover:underline hover:text-[#22CA38]">
-                <Link href={"/"}>Contact Us</Link>
+                <Link href={"/contact-us"}>Contact Us</Link>
               </li>
             </ul>
           </nav>
 
           {/* contact details */}
           <div className="max-w-[437px] w-full">
-            <h2 className="text-lg font-bold mb-6 text-white">Contact Details</h2>
+            <h2 className="text-lg font-bold mb-6 text-white">
+              Contact Details
+            </h2>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <Image
@@ -109,7 +111,10 @@ const Footer = () => {
                   height={40}
                   className="w-10 h-10"
                 />
-                <p className="text-white">Sanali Info Park , 1st Floor, A Block, 8-2-120/113, Road No. 2, Banjara Hills, Delhi - 500097</p>
+                <p className="text-white">
+                  D-115, U.G Floor, Abul Fazal Enclave, Jamia Nagar, Okhla, New
+                  Delhi-25.
+                </p>
               </div>
               <div className="flex items-center gap-3">
                 <Image
@@ -118,9 +123,14 @@ const Footer = () => {
                   width={40}
                   height={40}
                   className="w-10 h-10"
-
                 />
-                <p className="text-white">iyfofindia@gmail.com</p>
+                {/* <p className="text-white">iyfofindia@gmail.com</p> */}
+                <a
+                  href="mailto:iyfofindia@gmail.com"
+                  className="text-white hover:underline"
+                >
+                  iyfofindia@gmail.com
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <Image
@@ -129,59 +139,64 @@ const Footer = () => {
                   width={40}
                   height={40}
                   className="w-10 h-10"
-
                 />
-                <p className="text-white">+91 9898989898</p>
+                {/* <p className="text-white">+91 8800905047</p> */}
+                <a
+                  href="tel:+918800905047"
+                  className="text-white hover:underline"
+                >
+                  +91 8800905047
+                </a>
               </div>
             </div>
           </div>
 
           <div className="  flex items-center gap-5 md:hidden">
-              <Link href={"#"}>
-                <div className="w-10 h-10 rounded-full p-2 bg-white">
-                  <Image
-                    src={"/assets/social-icons/facebook.png"}
-                    alt="Facebook"
-                    width={20}
-                    height={20}
-                    className="w-full h-ful"
-                  />
-                </div>
-              </Link>
-              <Link href={"#"}>
-                <div className="w-10 h-10 rounded-full p-2 bg-white">
-                  <Image
-                    src={"/assets/social-icons/instagram.png"}
-                    alt="Instagram"
-                    width={20}
-                    height={20}
-                    className="w-full h-ful"
-                  />
-                </div>
-              </Link>
-              <Link href={"#"}>
-                <div className="w-10 h-10 rounded-full p-2 bg-white">
-                  <Image
-                    src={"/assets/social-icons/twitter.png"}
-                    alt="Twitter"
-                    width={20}
-                    height={20}
-                    className="w-full h-ful"
-                  />
-                </div>
-              </Link>
-              <Link href={"#"}>
-                <div className="w-10 h-10 rounded-full p-2 bg-white">
-                  <Image
-                    src={"/assets/social-icons/youtube.png"}
-                    alt="Youtube"
-                    width={20}
-                    height={20}
-                    className="w-full h-ful"
-                  />
-                </div>
-              </Link>
-            </div>
+            <Link href={"#"}>
+              <div className="w-10 h-10 rounded-full p-2 bg-white">
+                <Image
+                  src={"/assets/social-icons/facebook.png"}
+                  alt="Facebook"
+                  width={20}
+                  height={20}
+                  className="w-full h-ful"
+                />
+              </div>
+            </Link>
+            <Link href={"#"}>
+              <div className="w-10 h-10 rounded-full p-2 bg-white">
+                <Image
+                  src={"/assets/social-icons/instagram.png"}
+                  alt="Instagram"
+                  width={20}
+                  height={20}
+                  className="w-full h-ful"
+                />
+              </div>
+            </Link>
+            <Link href={"#"}>
+              <div className="w-10 h-10 rounded-full p-2 bg-white">
+                <Image
+                  src={"/assets/social-icons/twitter.png"}
+                  alt="Twitter"
+                  width={20}
+                  height={20}
+                  className="w-full h-ful"
+                />
+              </div>
+            </Link>
+            <Link href={"#"}>
+              <div className="w-10 h-10 rounded-full p-2 bg-white">
+                <Image
+                  src={"/assets/social-icons/youtube.png"}
+                  alt="Youtube"
+                  width={20}
+                  height={20}
+                  className="w-full h-ful"
+                />
+              </div>
+            </Link>
+          </div>
         </div>
 
         {/* bottom */}
