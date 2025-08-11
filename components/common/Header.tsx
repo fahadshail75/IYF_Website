@@ -88,7 +88,7 @@ const Header: FC = () => {
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:block">
+          <nav className="hidden lg:block">
             <ul className="flex  items-center gap-6 font-medium text-black">
               <li
                 className={clsx(
@@ -177,7 +177,7 @@ const Header: FC = () => {
           </nav>
 
           {/* Hamburger Icon */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             {menuOpen ? (
               <X
                 className="cursor-pointer"
