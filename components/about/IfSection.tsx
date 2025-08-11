@@ -43,6 +43,7 @@ const IfSection = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
+        variants={containerVariants}
       >
         <div className="lg:w-1/2">
           <motion.h2

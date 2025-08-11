@@ -22,11 +22,11 @@ const itemVariants: Variants = {
   visible: { opacity: 1, y: 0 },
 };
 
-type props = {
-  sectionData: any[];
+type Props = {
+  sectionData: string[];
 };
 
-const MotivesSection = ({ sectionData }: props) => {
+const MotivesSection = ({ sectionData }: Props) => {
   return (
     <section className="mb-14 xl:mb-20 2xl:mb-[160px]">
       <motion.div
@@ -100,8 +100,8 @@ const MotivesSection = ({ sectionData }: props) => {
         <motion.ul
           initial="hidden"
           whileInView="visible"
-        //   viewport={{ once: true, amount: 0.3 }}
-        viewport={{ once: false, amount: 0.3 }} 
+          //   viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: false, amount: 0.3 }}
           variants={containerVariants}
           className=""
         >

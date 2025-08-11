@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
 import { useMediaQuery } from "react-responsive";
+import Image from "next/image";
 
 export default function HeroSection() {
   const [isTypingStarted, setIsTypingStarted] = useState(false);
@@ -83,7 +84,9 @@ export default function HeroSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="hidden lg:block">
-            <img
+            <Image
+              width={1016}
+              height={716}
               src="/assets/home/banner-home-image.png"
               alt="banner-image"
               className="w-full h-auto max-w-[950px] mx-auto lg:mx-0"
@@ -91,7 +94,9 @@ export default function HeroSection() {
           </div>
 
           <div className="mt-10 lg:hidden">
-            <img
+            <Image
+              width={1016}
+              height={716}
               src="/assets/home/mb-home-banner-image.png"
               alt="banner-image"
               className="w-full h-auto max-w-[950px] mx-auto lg:mx-0"
