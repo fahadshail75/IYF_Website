@@ -4,7 +4,6 @@ import CampaignsSection from "@/components/home/Campaign";
 import EventosSection from "@/components/home/Events";
 import HeroSection from "@/components/home/HeroSection";
 import MagzineSwiper from "@/components/home/MagzinesSlider";
-import IslamicLibrary from "@/components/home/IslamicLibrary";
 // import RecentMagzines from "@/components/home/RecentMagzines";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -122,14 +121,35 @@ The language and style of "The Milestone" are simple yet impactful, leaving a la
         </div>
       </section>
 
+
       <section className="max-w-[1600px] bg-white w-full px-5 md:px-10 2xl:px-6 mx-auto space-y-10 md:space-y-20 2xl:space-y-[160px] my-10 md:my-20 2xl:my-[160px] ">
         <MagzineSwiper magazines={magazines} />
         <CampaignsSection campaigns={campaigns} />
         <EventosSection eventos={eventosData} />
       </section>
-
-      {/* Islamic Library Section */}
-      <IslamicLibrary />
+      {/* IYF Islamic Book Library Section (moved after events) */}
+      <section className="w-full bg-gradient-to-br from-[#f6fff8] to-white py-14 md:py-20 border-t border-gray-100 mt-10">
+        <div className="max-w-2xl mx-auto px-5 md:px-0 text-center flex flex-col items-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#22CA38]/10 px-4 py-2 text-base font-semibold uppercase tracking-wider text-[#22CA38] mb-5">
+            {/* Mosque Icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24"><path stroke="#22CA38" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 3v3m0 0c-2.5 1.5-7 5.5-7 10.5A1.5 1.5 0 0 0 6.5 18h11A1.5 1.5 0 0 0 19 16.5C19 11.5 14.5 7.5 12 6Zm0 0c2.5 1.5 7 5.5 7 10.5"/><path stroke="#22CA38" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M9 21h6"/></svg>
+            IYF Islamic Book Library
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1B2B34] mb-4">
+            Discover, Read, and Grow
+          </h2>
+          <p className="text-gray-600 text-base sm:text-lg mb-7 max-w-lg">
+            Dive into a curated collection of authentic Islamic books in Urdu, English, and more. Whether you’re a student, seeker, or lifelong learner, our library is open to all—completely free and accessible online.
+          </p>
+          <a
+            href="/learn-islam/books"
+            className="inline-flex items-center gap-2 px-7 py-3 bg-[#22CA38] text-white font-semibold rounded-xl shadow-lg hover:bg-[#1db832] transition-all duration-300 text-lg"
+          >
+            Explore Books
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-4-4 4 4-4 4"/></svg>
+          </a>
+        </div>
+      </section>
     </>
   );
 }
