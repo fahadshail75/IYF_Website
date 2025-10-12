@@ -5,21 +5,39 @@ import { motion } from "framer-motion";
 import { Variants } from "framer-motion";
 
 const containerVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.3,
       ease: "easeOut",
+      staggerChildren: 0.05,
     },
-    // staggerChildren: 0.15,  // Correct placement here
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, x: -15 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+    }
+  },
+};
+
+const imageVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.96 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    }
+  },
 };
 
 type Props = {
@@ -28,71 +46,67 @@ type Props = {
 
 const MotivesSection = ({ sectionData }: Props) => {
   return (
-    <section className="mb-14 xl:mb-20 2xl:mb-[160px]">
+    <section className="mb-14 xl:mb-20 2xl:mb-28">
       <motion.div
         className="hidden lg:block"
         initial="hidden"
         whileInView="visible"
-        // viewport={{ once: true, amount: 0.3 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
       >
         <motion.div
-          className="float-left md:w-[500px] lg:w-[500px] xl:w-[600px] xl:h-[550px] 2xl:w-[800px] 2x:h-[600px] mr-6 2xl:mr-10 mb-3"
+          className="float-left md:w-[500px] lg:w-[500px] xl:w-[600px] xl:h-[550px] 2xl:w-[800px] 2x:h-[600px] mr-8 2xl:mr-12 mb-6 rounded-2xl overflow-hidden shadow-2xl ring-4 ring-[#22CA38]/10 group hover:ring-[#22CA38]/20 transition-all duration-500"
           style={{
             shapeOutside: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
             overflow: "hidden",
-            shapeMargin: "10px",
+            shapeMargin: "15px",
           }}
-          variants={itemVariants}
+          variants={imageVariants}
         >
           <Image
             src={"/assets/about/about-2.png"}
-            width={500}
-            height={500}
-            alt="About-2.png"
-            className="w-full h-full"
+            width={800}
+            height={600}
+            alt="IYF Motives and Activities"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           />
         </motion.div>
       </motion.div>
 
       <motion.h2
-        className="text-lg md:text-xl lg:text-2xl font-semibold text-black mb-6 lg:hidden"
+        className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-6 lg:hidden"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        // viewport={{ once: true }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
         Motives and Activities of IYF
       </motion.h2>
 
       <motion.div
-        className="lg:hidden mb-5"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        // viewport={{ once: true }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+        className="lg:hidden mb-6 rounded-2xl overflow-hidden shadow-xl"
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <Image
           src={"/assets/about/about-2.png"}
-          width={500}
-          height={500}
-          alt="About-2.png"
-          className="w-full h-full"
+          width={600}
+          height={400}
+          alt="IYF Motives and Activities"
+          className="w-full h-full object-cover"
         />
       </motion.div>
 
       <div>
         <motion.h2
-          className="text-lg md:text-2xl font-semibold text-black mb-5 md:mb-10 hidden lg:block"
+          className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-6 md:mb-8 hidden lg:block"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          //   viewport={{ once: true }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
           Motives and Activities of IYF
         </motion.h2>
@@ -100,36 +114,37 @@ const MotivesSection = ({ sectionData }: Props) => {
         <motion.ul
           initial="hidden"
           whileInView="visible"
-          //   viewport={{ once: true, amount: 0.3 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className=""
+          className="space-y-4 md:space-y-5"
         >
           {sectionData.map((item, index) => (
             <motion.li
               key={index}
-              className="flex gap-2 mb-3 md:mb-3.5"
+              className="group flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl hover:bg-gradient-to-r hover:from-green-50/50 hover:to-transparent transition-all duration-300"
               variants={itemVariants}
-              transition={{ delay: 0.5 + index * 0.1 }}
             >
-              <div className="w-5 h-5 md:w-6 md:h-6 mt-1">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5 md:w-6 md:h-6"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M3.75 3C3.55109 3 3.36032 3.07902 3.21967 3.21967C3.07902 3.36032 3 3.55109 3 3.75V20.25C3 20.4489 3.07902 20.6397 3.21967 20.7803C3.36032 20.921 3.55109 21 3.75 21H20.25C20.4489 21 20.6397 20.921 20.7803 20.7803C20.921 20.6397 21 20.4489 21 20.25V3.75C21 3.55109 20.921 3.36032 20.7803 3.21967C20.6397 3.07902 20.4489 3 20.25 3H3.75ZM11.031 15.531L17.781 8.781L16.7205 7.719L10.5 13.9395L7.281 10.719L6.219 11.781L9.969 15.531C10.0387 15.6008 10.1214 15.6563 10.2125 15.6941C10.3037 15.7319 10.4013 15.7513 10.5 15.7513C10.5987 15.7513 10.6963 15.7319 10.7875 15.6941C10.8786 15.6563 10.9613 15.6008 11.031 15.531Z"
-                    fill="#22CA38"
-                  />
-                </svg>
+              <div className="flex-shrink-0 w-6 h-6 md:w-7 md:h-7 mt-1">
+                <div className="relative w-full h-full rounded-lg bg-gradient-to-br from-[#22CA38] to-emerald-500 flex items-center justify-center shadow-md group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-3.5 h-3.5 md:w-4 md:h-4"
+                  >
+                    <path
+                      d="M20 6L9 17L4 12"
+                      stroke="white"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
               </div>
-              <p className="text-sm md:text-base xl:text-lg leading-relaxed text-[#202020] font-medium">
+              <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-700 flex-1 pt-0.5 text-justify">
                 {item}
               </p>
             </motion.li>

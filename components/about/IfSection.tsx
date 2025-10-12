@@ -4,26 +4,39 @@ import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 
 const containerVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.4,
       ease: "easeOut",
-      // staggerChildren can be added here if you want auto stagger
+      staggerChildren: 0.06,
     },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 15 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, x: -10 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+    }
+  },
 };
 
 const imageVariants: Variants = {
-  hidden: { opacity: 0, x: 50 },
-  visible: { opacity: 1, x: 0 },
+  hidden: { opacity: 0, scale: 0.96 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    }
+  },
 };
 
 const IfSection = () => {
@@ -37,77 +50,81 @@ const IfSection = () => {
   ];
 
   return (
-    <section className="mb-14 xl:mb-20 2xl:mb-[160px]">
+    <section className="mb-14 xl:mb-20 2xl:mb-28">
       <motion.div
-        className="flex flex-col lg:flex-row md:items-center gap-5 md:gap-20 justify-between"
+        className="flex flex-col lg:flex-row items-start gap-8 md:gap-12 lg:gap-16 justify-between"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
       >
         <div className="lg:w-1/2">
           <motion.h2
-            className="text-lg md:text-2xl font-semibold text-black mb-3 md:mb-6"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 md:mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            IF ...
+            <span className="text-[#22CA38]">IF</span> ...
           </motion.h2>
 
-          <div className="mb-5 lg:hidden">
+          <div className="mb-6 lg:hidden">
             <motion.div
+              className="rounded-2xl overflow-hidden shadow-xl ring-4 ring-[#22CA38]/10"
               variants={imageVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <Image
                 src={"/assets/about/about-3.png"}
-                width={500}
-                height={500}
-                alt="About-3.png"
-                className="w-full h-full"
+                width={600}
+                height={400}
+                alt="IYF Vision"
+                className="w-full h-full object-cover"
               />
             </motion.div>
           </div>
 
           <motion.ul
-            className="list-disc pl-5 space-y-3 md:space-y-5"
+            className="space-y-4 md:space-y-5"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.2 }}
+            variants={containerVariants}
           >
             {listItems.map((item, index) => (
               <motion.li
                 key={index}
-                className="text-sm md:text-lg lg:text-xl leading-relaxed"
+                className="group flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-gradient-to-r from-green-50/30 to-transparent hover:from-green-50 hover:to-transparent transition-all duration-300"
                 variants={itemVariants}
-                transition={{ delay: 0.5 + index * 0.1 }}
               >
-                {item}
+                <div className="flex-shrink-0 w-2 h-2 mt-2.5 rounded-full bg-gradient-to-br from-[#22CA38] to-emerald-500 shadow-md group-hover:scale-125 transition-transform duration-300" />
+                <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-700 flex-1 text-justify">
+                  {item}
+                </p>
               </motion.li>
             ))}
           </motion.ul>
         </div>
 
         <motion.div
-          className="hidden lg:block lg:w-1/2"
+          className="hidden lg:block lg:w-1/2 lg:sticky lg:top-24"
           variants={imageVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
         >
-          <Image
-            src={"/assets/about/about-3.png"}
-            width={500}
-            height={500}
-            alt="About-3.png"
-            className="w-full h-full"
-          />
+          <div className="rounded-2xl overflow-hidden shadow-2xl ring-4 ring-[#22CA38]/10 group hover:ring-[#22CA38]/20 transition-all duration-500">
+            <Image
+              src={"/assets/about/about-3.png"}
+              width={800}
+              height={600}
+              alt="IYF Vision"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+          </div>
         </motion.div>
       </motion.div>
     </section>

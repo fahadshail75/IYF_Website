@@ -21,17 +21,26 @@ interface RecentMagazinesProps {
 
 export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const whatsappNumber = "918800905047"; // international format without '+'
+
+  const buildWhatsAppUrl = (title: string) => {
+    const message = encodeURIComponent(
+      `Salaam! I'd like to subscribe to ${title} magazine via IYF.`
+    );
+    return `https://wa.me/${whatsappNumber}?text=${message}`;
+  };
 
   return (
-    <section className="bg-white relative">
-      <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
-        Recent Magazines
-        <div className="flex justify-center mt-4">
-          <Separator />
-        </div>
-      </h2>
+    <section className="relative bg-white px-4">
+      <div className="mx-auto w-full max-w-5xl">
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
+          Recent Magazines
+          <div className="flex justify-center mt-4">
+            <Separator />
+          </div>
+        </h2>
 
-      <Swiper
+        <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={30}
         slidesPerView={1}
@@ -59,16 +68,27 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
                 >
                   {magazine.title}
                 </h3>
-                <p className={index===1 ? "jameel-font text-sm text-gray-600 whitespace-pre-line": "text-sm text-gray-600 whitespace-pre-line"}>
+                <p
+                  className={
+                    index === 1
+                      ? "jameel-font text-sm text-gray-600 whitespace-pre-line"
+                      : "text-sm text-gray-600 whitespace-pre-line"
+                  }
+                >
                   {isMobile
                     ? magazine.description.length > 300
                       ? magazine.description.slice(0, 300) + "..."
                       : magazine.description
                     : magazine.description}
                 </p>
-                <button className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 font-medium">
+                <a
+                  href={buildWhatsAppUrl(magazine.title)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded bg-green-600 px-4 py-2 font-medium text-white transition hover:bg-green-700"
+                >
                   Take Subscription
-                </button>
+                </a>
               </div>
 
               {/* Image */}
@@ -88,6 +108,7 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
 
       {/* Pagination Dots */}
       <div className="custom-pagination flex justify-center mt-6 space-x-2" />
+      </div>
     </section>
   );
 }

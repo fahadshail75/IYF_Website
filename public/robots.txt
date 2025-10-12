@@ -1,0 +1,15 @@
+# Islamic Youth Federation of India - Robots.txt
+# Allow all search engines to crawl
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://iyfindia.org/sitemap.xml
+
+# Crawl-delay for bots (optional)
+Crawl-delay: 0
+
+# Disallow admin or sensitive paths (if any in future)
+# Disallow: /admin/
+# Disallow: /api/private/

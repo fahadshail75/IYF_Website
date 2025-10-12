@@ -20,15 +20,15 @@ export default function HeroSection() {
   }, [isTypingStarted]);
 
   return (
-    <section className="relative max-w-[1600px] mx-auto px-6 lg:px-10 py-20  xl:pb-[128px] overflow-hidden">
+    <section className="relative max-w-[1600px] mx-auto px-6 lg:px-10 pt-0 pb-20 xl:pb-[128px] overflow-visible -mt-2">
       <div className="relative flex flex-col lg:flex-row items-center lg:items-center">
         {/* Text */}
-        <div className="relative z-10 flex-1 sm:text-center lg:text-left bg-gradient-to-r from-white via-white/80 to-transparent sm:p-6 lg:p-0">
-          <h1 className="italic font-bold text-[#2F4858] text-3xl sm:text-4xl xl:text-5xl 2xl:text-[56px] mb-6 leading-tight tracking-[5px]">
+        <div className="relative flex-1 sm:text-center lg:text-left bg-gradient-to-r from-white via-white/80 to-transparent sm:p-6 lg:p-0">
+          <h1 className="italic font-bold text-[#2F4858] text-2xl sm:text-[34px] xl:text-[44px] 2xl:text-[52px] mb-6 leading-tight tracking-[5px]">
             <div className="hidden sm:block">
               <ReactTyped
                 strings={[
-                  `They were<br/><span class="text-[#22CA38] font-black text-5xl sm:text-6xl xl:text-[90px] 2xl:text-[104px]">YOUTHS</span><br/>who believed in their<br/>lord, and we increased them in guidance.`,
+                  `They were<br/><span class="text-[#22CA38] font-black text-4xl sm:text-5xl xl:text-[72px] 2xl:text-[84px]">YOUTHS</span><br/>who believed in their<br/>lord, and we increased them in guidance.`,
                 ]}
                 typeSpeed={40}
                 showCursor={false}
@@ -39,10 +39,10 @@ export default function HeroSection() {
               />
             </div>
 
-            <div className=" sm:hidden">
+            <div className="sm:hidden">
               <ReactTyped
                 strings={[
-                  `They were <span class="text-[#22CA38] font-black text-5xl sm:text-6xl xl:text-[90px] 2xl:text-[104px]">YOUTHS</span> who believed in their<br/>lord, and we increased them in guidance.`,
+                  `They were <span class="text-[#22CA38] font-black text-4xl sm:text-5xl xl:text-[72px] 2xl:text-[84px]">YOUTHS</span> who believed in their<br/>lord, and we increased them in guidance.`,
                 ]}
                 typeSpeed={40}
                 showCursor={false}
@@ -55,14 +55,25 @@ export default function HeroSection() {
           </h1>
 
           {isTypedDone && (
-            <motion.p
-              className="text-lg sm:text-xl xl:text-2xl italic font-semibold text-[#2F4858] mt-4"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              Join the movement of dedicated youth working to uphold their deen.
-            </motion.p>
+            <>
+              <motion.p
+                className="mt-3 text-sm font-semibold uppercase tracking-[0.3em] text-[#22CA38]"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                Surah Al-Kahf (18:13)
+              </motion.p>
+
+              <motion.p
+                className="text-lg sm:text-xl xl:text-2xl italic font-semibold text-[#2F4858] mt-4"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                Join the movement of dedicated youth working to uphold their deen.
+              </motion.p>
+            </>
           )}
         </div>
 
@@ -104,6 +115,7 @@ export default function HeroSection() {
           </div>
         </motion.div>
       </div>
+
     </section>
   );
 }

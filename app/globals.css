@@ -81,7 +81,7 @@ body {
 
 
 .gradient-bg {
-  background: linear-gradient(to right, #22CA38 32%, #FFFFFF 100%);
+  background: linear-gradient(135deg, #22CA38 0%, #10B981 50%, #0F5127 100%);
 }
 
 

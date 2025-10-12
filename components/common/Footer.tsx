@@ -20,7 +20,7 @@ const Footer = () => {
 
             {/* social Icon */}
             <div className="hidden  md:flex items-center gap-5">
-              <Link href={"#"}>
+              <Link href={"https://www.facebook.com/IYFofIndia/"}>
                 <div className="w-10 h-10 rounded-full p-2 bg-white">
                   <Image
                     src={"/assets/social-icons/facebook.png"}
@@ -31,7 +31,7 @@ const Footer = () => {
                   />
                 </div>
               </Link>
-              <Link href={"#"}>
+              <Link href={"https://www.instagram.com/iyfofindia/?hl=en"}>
                 <div className="w-10 h-10 rounded-full p-2 bg-white">
                   <Image
                     src={"/assets/social-icons/instagram.png"}
@@ -92,7 +92,7 @@ const Footer = () => {
                 <Link href={"/learn-islam"}>Learn Islam</Link>
               </li>
               <li className="text-white hover:underline hover:text-[#22CA38]">
-                <Link href={"/contact-us"}>Contact Us</Link>
+                <a href="mailto:iyfofindia@gmail.com">Contact Us</a>
               </li>
             </ul>
           </nav>
@@ -152,7 +152,7 @@ const Footer = () => {
           </div>
 
           <div className="  flex items-center gap-5 md:hidden">
-            <Link href={"#"}>
+            <Link href={"https://www.facebook.com/IYFofIndia/"}>
               <div className="w-10 h-10 rounded-full p-2 bg-white">
                 <Image
                   src={"/assets/social-icons/facebook.png"}
@@ -163,7 +163,7 @@ const Footer = () => {
                 />
               </div>
             </Link>
-            <Link href={"#"}>
+            <Link href={"https://www.instagram.com/iyfofindia/?hl=en"}>
               <div className="w-10 h-10 rounded-full p-2 bg-white">
                 <Image
                   src={"/assets/social-icons/instagram.png"}
@@ -213,9 +213,9 @@ const Footer = () => {
             <Link href={"/privacy-policy"}>
               <div className="text-white underline">Privacy Policy</div>
             </Link>
-            <Link href={"/contact-us"}>
+            <a href="mailto:iyfofindia@gmail.com">
               <div className="text-white underline">Contact Us</div>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

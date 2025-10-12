@@ -6,7 +6,7 @@ import { Rocket, Sparkles } from "lucide-react";
 
 const ComingSoon: FC = () => {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-[#F9FAFB] text-center px-4">
+    <main className="min-h-screen flex flex-col items-center justify-center bg-[#F9FAFB] text-center px-4 -mt-2">
       {/* Lucide Icon Logo */}
       <div className="flex items-center justify-center mb-6">
         <div className="bg-[#22CA38] p-4 rounded-full shadow-lg">
