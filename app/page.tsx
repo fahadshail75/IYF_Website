@@ -6,6 +6,7 @@ import HeroSection from "@/components/home/HeroSection";
 import MagzineSwiper from "@/components/home/MagzinesSlider";
 // import RecentMagzines from "@/components/home/RecentMagzines";
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
 
 // SEO metadata for homepage
@@ -141,13 +142,13 @@ The language and style of "The Milestone" are simple yet impactful, leaving a la
           <p className="text-gray-600 text-base sm:text-lg mb-7 max-w-lg">
             Dive into a curated collection of authentic Islamic books in Urdu, English, and more. Whether you’re a student, seeker, or lifelong learner, our library is open to all—completely free and accessible online.
           </p>
-          <a
+          <Link
             href="/learn-islam/books"
             className="inline-flex items-center gap-2 px-7 py-3 bg-[#22CA38] text-white font-semibold rounded-xl shadow-lg hover:bg-[#1db832] transition-all duration-300 text-lg"
           >
             Explore Books
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-4-4 4 4-4 4"/></svg>
-          </a>
+          </Link>
         </div>
       </section>
     </>
