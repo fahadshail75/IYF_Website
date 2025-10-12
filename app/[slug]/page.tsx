@@ -19,7 +19,7 @@ const ComingSoon: FC = () => {
       </h1>
 
       <p className="text-lg md:text-xl text-gray-600 mb-8">
-        We're working hard on something amazing. Stay with us!
+        We&apos;re working hard on something amazing. Stay with us!
       </p>
 
       <div className="flex justify-center">

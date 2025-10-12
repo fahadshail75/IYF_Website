@@ -3,8 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { BookOpen, Download, Headphones, ArrowRight, Sparkles } from "lucide-react";
+import { BookOpen, Download, Headphones, ArrowRight } from "lucide-react";
 
 /**
  * IslamicLibrary Component
