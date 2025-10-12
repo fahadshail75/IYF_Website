@@ -9,7 +9,7 @@ export const organizationSchema = {
   name: 'Islamic Youth Federation of India',
   alternateName: 'IYF India',
   url: 'https://iyfindia.org',
-  logo: 'https://iyfindia.org/assets/black-logo.svg',
+  logo: 'https://iyfindia.org/assets/logo-IYF.png',
   description: 'Islamic Youth Federation of India empowers Muslim youth through Islamic education, character development, and community service.',
   foundingDate: '1970', // Update with actual founding date
   foundingLocation: {
@@ -56,7 +56,7 @@ export const educationalOrganizationSchema = {
   '@type': 'EducationalOrganization',
   name: 'Islamic Youth Federation of India',
   url: 'https://iyfindia.org',
-  logo: 'https://iyfindia.org/assets/black-logo.svg',
+  logo: 'https://iyfindia.org/assets/logo-IYF.png',
   description: 'Leading Islamic youth organization providing Islamic education, books, and audio lectures',
   educationalCredentialAwarded: 'Islamic Education',
   hasOfferCatalog: {

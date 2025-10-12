@@ -4,6 +4,7 @@ import CampaignsSection from "@/components/home/Campaign";
 import EventosSection from "@/components/home/Events";
 import HeroSection from "@/components/home/HeroSection";
 import MagzineSwiper from "@/components/home/MagzinesSlider";
+import IslamicLibrary from "@/components/home/IslamicLibrary";
 // import RecentMagzines from "@/components/home/RecentMagzines";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -126,6 +127,9 @@ The language and style of "The Milestone" are simple yet impactful, leaving a la
         <CampaignsSection campaigns={campaigns} />
         <EventosSection eventos={eventosData} />
       </section>
+
+      {/* Islamic Library Section */}
+      <IslamicLibrary />
     </>
   );
 }

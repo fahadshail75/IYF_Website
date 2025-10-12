@@ -62,8 +62,10 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
               {/* Text Section */}
               <div className="space-y-4 flex-1">
                 <h3
-                  className={`text-2xl font-semibold ${
-                    index === 1 ? "text-right jameel-font" : "text-left"
+                  className={`font-semibold ${
+                    index === 1 
+                      ? "text-right jameel-font text-4xl md:text-5xl" 
+                      : "text-left text-2xl"
                   }`}
                 >
                   {magazine.title}
@@ -71,7 +73,7 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
                 <p
                   className={
                     index === 1
-                      ? "jameel-font text-sm text-gray-600 whitespace-pre-line"
+                      ? "jameel-font text-lg md:text-xl text-gray-600 whitespace-pre-line text-right leading-loose"
                       : "text-sm text-gray-600 whitespace-pre-line"
                   }
                 >
@@ -85,7 +87,9 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
                   href={buildWhatsAppUrl(magazine.title)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded bg-green-600 px-4 py-2 font-medium text-white transition hover:bg-green-700"
+                  className={`inline-flex items-center justify-center gap-2 rounded bg-green-600 px-4 py-2 font-medium text-white transition hover:bg-green-700 ${
+                    index === 1 ? "md:ml-auto" : ""
+                  }`}
                 >
                   Take Subscription
                 </a>

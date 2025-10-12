@@ -3,15 +3,16 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
-import { useMediaQuery } from "react-responsive";
 import Image from "next/image";
 
 export default function HeroSection() {
   const [isTypingStarted, setIsTypingStarted] = useState(false);
   const [isTypedDone, setIsTypedDone] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Detect large screens
-  const isDesktop = useMediaQuery({ minWidth: 1024 });
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     if (isTypingStarted) {
@@ -80,21 +81,20 @@ export default function HeroSection() {
         {/* Image */}
         <motion.div
           className="flex-1 lg:-ml-20 relative z-0"
-          initial={
-            isDesktop
-              ? { x: 200, opacity: 0 } // Desktop → from left
-              : { y: 200, opacity: 0 } // Mobile → from bottom
-          }
+          initial={false}
           animate={
-            isTypingStarted
+            isMounted && isTypingStarted
               ? { x: 0, y: 0, opacity: 1 }
-              : isDesktop
-              ? { x: 200, opacity: 0 }
-              : { y: 200, opacity: 0 }
+              : { opacity: 0 }
           }
           transition={{ duration: 0.8, ease: "easeOut" }}
+          style={{ 
+            transform: !isMounted || !isTypingStarted ? 'translateY(200px)' : undefined 
+          }}
         >
-          <div className="hidden lg:block">
+          <div className="hidden lg:block" style={{
+            transform: !isMounted || !isTypingStarted ? 'translateX(200px)' : undefined
+          }}>
             <Image
               width={1016}
               height={716}

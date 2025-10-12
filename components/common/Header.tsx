@@ -17,7 +17,8 @@ import {
   GraduationCap,
   Building,
   Heart,
-  Archive
+  Archive,
+  Book
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -27,46 +28,46 @@ const navigationItems = [
     label: "Media",
     icon: Newspaper,
     items: [
-      { href: "/media/press-release", label: "Press Release", icon: Newspaper },
-      { href: "/media/events-activities", label: "Events & Activities", icon: Calendar },
-      { href: "/media/articles", label: "Articles", icon: FileText },
+      { href: "/media/press-release", label: "Press Release", icon: Newspaper, external: false },
+      { href: "/media/events-activities", label: "Events & Activities", icon: Calendar, external: false },
+      { href: "/media/articles", label: "Articles", icon: FileText, external: false },
     ]
   },
   {
     label: "Magazines",
     icon: BookOpen,
     items: [
-      { href: "/magazines/urdu", label: "Urdu - Nuqoosh e Raah", icon: BookOpen },
-      { href: "/magazines/english", label: "English - The Milestone", icon: BookOpen },
-      { href: "/magazines/bangla", label: "Bangla - Satyabaak", icon: BookOpen },
+      { href: "/magazines/urdu", label: "Urdu - Nuqoosh e Raah", icon: BookOpen, external: false },
+      { href: "https://themilestone.iyfindia.org/", label: "English - The Milestone", icon: BookOpen, external: true },
+      { href: "https://bengali.iyfindia.org/tag/bengali-magazine/", label: "Bangla - Satyabaak", icon: BookOpen, external: true },
     ]
   },
   {
     label: "Courses",
     icon: GraduationCap,
     items: [
-      { href: "/courses/quran", label: "Quran Course", icon: BookOpen },
-      { href: "/courses/hadees", label: "Hadees Course", icon: BookOpen },
-      { href: "/courses/seerat", label: "Seerat Course", icon: BookOpen },
-      { href: "/courses/fiqh", label: "Fiqh Course", icon: BookOpen },
-      { href: "/courses/history", label: "History Course", icon: Archive },
+      { href: "/courses/quran", label: "Quran Course", icon: BookOpen, external: false },
+      { href: "/courses/hadees", label: "Hadees Course", icon: BookOpen, external: false },
+      { href: "/courses/seerat", label: "Seerat Course", icon: BookOpen, external: false },
+      { href: "/courses/fiqh", label: "Fiqh Course", icon: BookOpen, external: false },
+      { href: "/courses/history", label: "History Course", icon: Archive, external: false },
     ]
   },
   {
     label: "Departments",
     icon: Building,
     items: [
-      { href: "/departments/campus", label: "Campus", icon: Building },
-      { href: "/departments/dawat", label: "Dawat", icon: BookOpen },
-      { href: "/departments/khidmat-e-khalq", label: "Khidmat e Khalq", icon: Heart },
+      { href: "/departments/campus", label: "Campus", icon: Building, external: false },
+      { href: "/departments/dawat", label: "Dawat", icon: BookOpen, external: false },
+      { href: "/departments/khidmat-e-khalq", label: "Khidmat e Khalq", icon: Heart, external: false },
     ]
   },
   {
     label: "Learn Islam",
-    icon: BookOpen,
+    icon: Book,
     items: [
-      { href: "/learn-islam/books", label: "Islamic Books", icon: BookOpen },
-      { href: "/learn-islam/blogs", label: "Blogs", icon: FileText },
+      { href: "/learn-islam/books", label: "Islamic Books", icon: BookOpen, external: false },
+      { href: "/learn-islam/blogs", label: "Blogs", icon: FileText, external: false },
     ]
   }
 ];
@@ -230,6 +231,30 @@ const Header: FC = () => {
                       <div className="py-1.5 px-1">
                         {item.items.map((subItem) => {
                           const SubIconComponent = subItem.icon;
+                          const linkContent = (
+                            <>
+                              <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-gray-100 flex-shrink-0">
+                                <SubIconComponent size={15} className="text-[#22CA38]" />
+                              </div>
+                              <span className="flex-1">{subItem.label}</span>
+                            </>
+                          );
+
+                          if (subItem.external) {
+                            return (
+                              <a
+                                key={subItem.href}
+                                href={subItem.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={closeDropdown}
+                                className="flex items-center gap-2.5 px-2.5 py-2 mx-1 text-[13px] text-gray-700 hover:text-[#22CA38] hover:bg-gray-100 rounded-lg transition-colors font-medium"
+                              >
+                                {linkContent}
+                              </a>
+                            );
+                          }
+
                           return (
                             <Link
                               key={subItem.href}
@@ -237,10 +262,7 @@ const Header: FC = () => {
                               onClick={closeDropdown}
                               className="flex items-center gap-2.5 px-2.5 py-2 mx-1 text-[13px] text-gray-700 hover:text-[#22CA38] hover:bg-gray-100 rounded-lg transition-colors font-medium"
                             >
-                              <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-gray-100 flex-shrink-0">
-                                <SubIconComponent size={15} className="text-[#22CA38]" />
-                              </div>
-                              <span className="flex-1">{subItem.label}</span>
+                              {linkContent}
                             </Link>
                           );
                         })}
@@ -366,6 +388,28 @@ const Header: FC = () => {
                           >
                             {item.items.map((subItem) => {
                               const SubIconComponent = subItem.icon;
+                              const linkContent = (
+                                <>
+                                  <SubIconComponent size={15} className="text-[#22CA38]" />
+                                  <span>{subItem.label}</span>
+                                </>
+                              );
+
+                              if (subItem.external) {
+                                return (
+                                  <a
+                                    key={subItem.href}
+                                    href={subItem.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={closeMobileMenu}
+                                    className="flex items-center gap-2.5 px-2.5 py-2.5 text-[14px] text-gray-600 hover:text-[#22CA38] hover:bg-gray-100 rounded-lg transition-colors font-medium"
+                                  >
+                                    {linkContent}
+                                  </a>
+                                );
+                              }
+
                               return (
                                 <Link
                                   key={subItem.href}
@@ -373,8 +417,7 @@ const Header: FC = () => {
                                   onClick={closeMobileMenu}
                                   className="flex items-center gap-2.5 px-2.5 py-2.5 text-[14px] text-gray-600 hover:text-[#22CA38] hover:bg-gray-100 rounded-lg transition-colors font-medium"
                                 >
-                                  <SubIconComponent size={15} className="text-[#22CA38]" />
-                                  <span>{subItem.label}</span>
+                                  {linkContent}
                                 </Link>
                               );
                             })}

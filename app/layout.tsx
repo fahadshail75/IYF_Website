@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     siteName: 'IYF India',
     images: [
       {
-        url: '/assets/black-logo.svg',
+        url: '/assets/logo-IYF.png',
         width: 1200,
         height: 630,
         alt: 'Islamic Youth Federation of India Logo',
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Islamic Youth Federation of India | Empowering Muslim Youth',
     description: 'IYF India empowers Muslim youth through Islamic education, character development, and community service.',
-    images: ['/assets/black-logo.svg'],
+    images: ['/assets/logo-IYF.png'],
   },
   verification: {
     google: 'your-google-verification-code', // Replace with actual Google Search Console verification code
@@ -90,8 +90,7 @@ export default function RootLayout({
         {/* Additional SEO meta tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="theme-color" content="#22CA38" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/assets/black-logo.svg" />
+        <link rel="apple-touch-icon" href="/assets/logo-IYF.png" />
         <meta name="format-detection" content="telephone=no" />
         
         {/* Structured Data for SEO */}

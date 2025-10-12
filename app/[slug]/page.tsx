@@ -19,15 +19,17 @@ const ComingSoon: FC = () => {
       </h1>
 
       <p className="text-lg md:text-xl text-gray-600 mb-8">
-        We’re working hard on something amazing. Stay with us!
+        We're working hard on something amazing. Stay with us!
       </p>
 
-      <Link
-        href="/"
-        className="px-6 py-3 rounded bg-[#22CA38] text-white font-semibold hover:bg-[#1aa32d] transition duration-300"
-      >
-        Back to Home
-      </Link>
+      <div className="flex justify-center">
+        <Link
+          href="/"
+          className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[#22CA38] text-white font-semibold hover:bg-[#1aa32d] transition duration-300"
+        >
+          Back to Home
+        </Link>
+      </div>
     </main>
   );
 };

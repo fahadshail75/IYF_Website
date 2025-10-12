@@ -50,14 +50,14 @@ const page = () => {
   ];
 
   return (
-    <main className="max-w-[1600px] bg-white w-full px-5 md:px-10 2xl:px-20 mx-auto">
-      <section className="gradient-bg py-9 px-5 md:px-10 lg:px-20 2xl:px-[100px] mb-10 xl:mb-20 2xl:mb-[160px] rounded-md mt-2">
-        <h1 className="text-white font-bold text-3xl md:text-4xl xl:text-[40px] mb-5 md:mb-10">
+    <main className="max-w-[1600px] bg-white w-full px-4 sm:px-5 md:px-10 2xl:px-20 mx-auto">
+      <section className="gradient-bg py-8 sm:py-9 px-4 sm:px-5 md:px-10 lg:px-20 2xl:px-[100px] mb-8 sm:mb-10 xl:mb-20 2xl:mb-[160px] rounded-md mt-2">
+        <h1 className="text-white font-bold text-2xl sm:text-3xl md:text-4xl xl:text-[40px] mb-4 sm:mb-5 md:mb-10">
           About Us
         </h1>
 
-        <div className="text-white font-medium text-base md:text-2xl flex items-center gap-2">
-          Home <ChevronRight /> About Us
+        <div className="text-white font-medium text-sm sm:text-base md:text-2xl flex items-center gap-2">
+          Home <ChevronRight size={18} className="sm:w-6 sm:h-6" /> About Us
         </div>
       </section>
 
@@ -66,7 +66,7 @@ const page = () => {
       <IfSection />
       <PurposefulLifeSection />
 
-      <div className="relative overflow-hidden bg-gradient-to-br from-[#22CA38] via-[#1db832] to-[#18a028] text-white rounded-2xl shadow-2xl shadow-[#22CA38]/30 px-6 py-6 md:px-8 md:py-7 lg:px-10 lg:py-8 mb-10 xl:mb-20 2xl:mb-[160px]">
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#22CA38] via-[#1db832] to-[#18a028] text-white rounded-xl sm:rounded-2xl shadow-2xl shadow-[#22CA38]/30 px-5 py-5 sm:px-6 sm:py-6 md:px-8 md:py-7 lg:px-10 lg:py-8 mb-8 sm:mb-10 xl:mb-20 2xl:mb-[160px]">
         {/* Decorative background pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
@@ -74,10 +74,10 @@ const page = () => {
         </div>
 
         <div className="relative z-10 text-center max-w-3xl mx-auto">
-          <p className="text-sm md:text-lg lg:text-xl leading-relaxed font-medium">
+          <p className="text-xs sm:text-sm md:text-lg lg:text-xl leading-relaxed font-medium">
             Walk on the path of truth and make the Quran your guide. Use your youth to serve Allah and aim for Jannah (Heaven).
           </p>
-          <p className="text-sm md:text-lg lg:text-xl leading-relaxed font-medium mt-3">
+          <p className="text-xs sm:text-sm md:text-lg lg:text-xl leading-relaxed font-medium mt-2 sm:mt-3">
             Be a part of <span className="font-bold text-white">IYF</span> – <span className="font-bold text-white drop-shadow-lg">A movement for change, justice, and the pleasure of Allah.</span>
           </p>
         </div>
