@@ -31,24 +31,7 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
   };
 
   return (
-    <section className="relative bg-white px-4">
-      {/* Refined Professional Corner Accents */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Top-left corner */}
-        <div className="absolute top-0 left-0 flex flex-col gap-1 pl-4 pt-4">
-          <span className="block h-[3px] w-16 rounded-full bg-gradient-to-r from-[#22CA38] via-[#22CA38]/70 to-transparent"></span>
-          <span className="block h-[3px] w-12 rounded-full bg-gradient-to-r from-[#22CA38]/80 via-[#22CA38]/40 to-transparent"></span>
-        </div>
-
-        {/* Bottom-right corner */}
-        <div className="absolute bottom-0 right-0 flex flex-col gap-1 pr-4 pb-4 items-end">
-          <span className="block h-[3px] w-16 rounded-full bg-gradient-to-l from-[#1B2B34] via-[#1B2B34]/60 to-transparent"></span>
-          <span className="block h-[3px] w-12 rounded-full bg-gradient-to-l from-[#1B2B34]/80 via-[#1B2B34]/40 to-transparent"></span>
-        </div>
-
-        {/* Subtle corner radius outline */}
-        <div className="absolute inset-0 border border-[#22CA38]/10 rounded-3xl" />
-      </div>
+    <section className="bg-white px-4">
 
       <div className="mx-auto w-full max-w-5xl">
         <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
