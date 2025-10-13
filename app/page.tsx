@@ -129,22 +129,61 @@ The language and style of "The Milestone" are simple yet impactful, leaving a la
         <EventosSection eventos={eventosData} />
       </section>
       {/* IYF Islamic Book Library Section (moved after events) */}
-      <section className="w-full bg-gradient-to-br from-[#f6fff8] to-white py-10 md:py-20 border-t border-gray-100 mt-10">
+      <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#f6fff8] to-white py-10 md:py-20 border-t border-gray-100 mt-10">
+        {/* Refined Professional Corner Accents */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          {/* Top-left corner */}
+          <div className="absolute top-0 left-0 flex flex-col gap-1 pl-6 pt-6">
+            <span className="block h-[3px] w-20 rounded-full bg-gradient-to-r from-[#22CA38] via-[#22CA38]/70 to-transparent"></span>
+            <span className="block h-[3px] w-16 rounded-full bg-gradient-to-r from-[#22CA38]/80 via-[#22CA38]/40 to-transparent"></span>
+          </div>
+
+          {/* Bottom-right corner */}
+          <div className="absolute bottom-0 right-0 flex flex-col gap-1 pr-6 pb-6 items-end">
+            <span className="block h-[3px] w-20 rounded-full bg-gradient-to-l from-[#1B2B34] via-[#1B2B34]/60 to-transparent"></span>
+            <span className="block h-[3px] w-16 rounded-full bg-gradient-to-l from-[#1B2B34]/80 via-[#1B2B34]/40 to-transparent"></span>
+          </div>
+
+          {/* Subtle corner radius outline */}
+          <div className="absolute inset-0 border border-[#22CA38]/10 rounded-[40px]" />
+        </div>
+
         <div className="max-w-2xl mx-auto px-4 md:px-0 text-center flex flex-col items-center">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-[#22CA38]/10 px-3 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wide text-[#22CA38] mb-4">
-            {/* Mosque Icon */}
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24"><path stroke="#22CA38" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 3v3m0 0c-2.5 1.5-7 5.5-7 10.5A1.5 1.5 0 0 0 6.5 18h11A1.5 1.5 0 0 0 19 16.5C19 11.5 14.5 7.5 12 6Zm0 0c2.5 1.5 7 5.5 7 10.5"/><path stroke="#22CA38" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M9 21h6"/></svg>
+            {/* Open Book Icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="#22CA38"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 20c0-2.5-2.5-4-6-4H4a2 2 0 0 0-2 2v-13a2 2 0 0 1 2-2h4c3.5 0 4 1.5 4 4"
+              />
+              <path
+                stroke="#22CA38"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 20c0-2.5 2.5-4 6-4h2a2 2 0 0 1 2 2v-13a2 2 0 0 0-2-2h-4c-3.5 0-4 1.5-4 4"
+              />
+            </svg>
             IYF Islamic Book Library
           </span>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#1B2B34] mb-3 sm:mb-4">
+          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#1B2B34] mb-3 sm:mb-4">
             Discover, Read, and Grow
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base mb-6 sm:mb-7 max-w-lg leading-relaxed">
+          <p className="text-gray-600 text-xs sm:text-base mb-6 sm:mb-7 max-w-lg leading-relaxed">
             Dive into a curated collection of authentic Islamic books in Urdu, English, and more. Whether you’re a student, seeker, or lifelong learner, our library is open to all—completely free and accessible online.
           </p>
           <Link
             href="/learn-islam/books"
-            className="inline-flex items-center gap-1.5 sm:gap-2 px-5 py-2.5 sm:px-7 sm:py-3 bg-[#22CA38] text-white font-semibold rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:bg-[#1db832] transition-all duration-300 text-sm sm:text-lg"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-7 sm:py-3 bg-[#22CA38] text-white font-semibold rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:bg-[#1db832] transition-all duration-300 text-xs sm:text-base"
           >
             Explore Books
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-4-4 4 4-4 4"/></svg>
