@@ -24,12 +24,12 @@ export default function HeroSection() {
     <section className="relative max-w-[1600px] mx-auto px-6 lg:px-10 pt-0 pb-20 xl:pb-[128px] overflow-visible -mt-2">
       <div className="relative flex flex-col lg:flex-row items-center lg:items-center">
         {/* Text */}
-        <div className="relative flex-1 sm:text-center lg:text-left bg-gradient-to-r from-white via-white/80 to-transparent sm:p-6 lg:p-0">
-          <h1 className="italic font-bold text-[#2F4858] text-2xl sm:text-[34px] xl:text-[44px] 2xl:text-[52px] mb-6 leading-tight tracking-[5px]">
+        <div className="relative z-20 flex-1 sm:text-center lg:text-left bg-gradient-to-r from-white via-white/80 to-transparent sm:p-6 lg:p-0">
+          <h1 className="italic font-bold text-black text-2xl sm:text-[34px] xl:text-[44px] 2xl:text-[52px] mb-6 leading-tight tracking-[5px]">
             <div className="hidden sm:block">
               <ReactTyped
                 strings={[
-                  `They were<br/><span class="text-[#22CA38] font-black text-4xl sm:text-5xl xl:text-[72px] 2xl:text-[84px]">YOUTHS</span><br/>who believed in their<br/>lord, and we increased them in guidance.`,
+                  `<span class='text-black'>They were</span><br/><span class="text-[#22CA38] font-black text-4xl sm:text-5xl xl:text-[72px] 2xl:text-[84px]">YOUTHS</span><br/><span class='text-black'>who believed in their<br/>lord, and we increased them in guidance.</span>`,
                 ]}
                 typeSpeed={40}
                 showCursor={false}
@@ -43,7 +43,7 @@ export default function HeroSection() {
             <div className="sm:hidden">
               <ReactTyped
                 strings={[
-                  `They were <span class="text-[#22CA38] font-black text-4xl sm:text-5xl xl:text-[72px] 2xl:text-[84px]">YOUTHS</span> who believed in their<br/>lord, and we increased them in guidance.`,
+                  `<span class='text-black'>They were</span> <span class="text-[#22CA38] font-black text-4xl sm:text-5xl xl:text-[72px] 2xl:text-[84px]">YOUTHS</span> <span class='text-black'>who believed in their<br/>lord, and we increased them in guidance.</span>`,
                 ]}
                 typeSpeed={40}
                 showCursor={false}
@@ -67,7 +67,7 @@ export default function HeroSection() {
               </motion.p>
 
               <motion.p
-                className="text-lg sm:text-xl xl:text-2xl italic font-semibold text-[#2F4858] mt-4"
+                className="text-lg sm:text-xl xl:text-2xl italic font-semibold text-black mt-4"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
@@ -80,7 +80,7 @@ export default function HeroSection() {
 
         {/* Image */}
         <motion.div
-          className="flex-1 lg:-ml-20 relative z-0"
+          className="flex-1 lg:ml-10 xl:ml-16 relative z-10"
           initial={false}
           animate={
             isMounted && isTypingStarted
