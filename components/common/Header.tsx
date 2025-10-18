@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-// Modern navigation structure with icons - Updated Al-Huda Library
+
 const navigationItems = [
   {
     label: "Media",
@@ -66,7 +66,7 @@ const navigationItems = [
     label: "IYF Islamic Digital Library",
     icon: Book,
     items: [
-      { href: "/learn-islam/books", label: "IYF Islamic Digital Library", icon: BookOpen, external: false },
+      { href: "/learn-islam/books", label: "AL_HUDA", icon: BookOpen, external: false },
       { href: "/learn-islam/blogs", label: "Blogs", icon: FileText, external: false },
     ]
   }
