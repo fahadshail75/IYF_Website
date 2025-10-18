@@ -18,7 +18,7 @@ import {
   Building,
   Heart,
   Archive,
-  Book
+  Book,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -76,6 +76,7 @@ const Header: FC = () => {
   const headerRef = useRef<HTMLElement | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
 
   const isActive = (path: string) => pathname === path;
 
@@ -95,6 +96,7 @@ const Header: FC = () => {
   }, [mobileMenuOpen]);
 
   const toggleDropdown = (label: string) => setActiveDropdown((curr) => (curr === label ? null : label));
+  const toggleMobileDropdown = (label: string) => setActiveMobileDropdown((curr) => (curr === label ? null : label));
   const closeDropdown = () => setActiveDropdown(null);
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
@@ -105,11 +107,11 @@ const Header: FC = () => {
     <header ref={headerRef} className="bg-white sticky top-0 z-[9999] shadow">
       <div className="max-w-[1600px] mx-auto flex items-center justify-between px-6 md:px-10 py-3">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center">
           <Image
             src="/assets/black-logo.png"
             alt="IYF Logo"
-            width={240}
+            width={230}
             height={70}
             className="h-14 w-auto md:h-16"
             priority
@@ -120,7 +122,7 @@ const Header: FC = () => {
         <nav className="hidden lg:flex items-center space-x-1.5">
           <Link
             href="/"
-            className={`flex items-center gap-1.5 px-2.5 py-1.5 text-[14px] font-semibold rounded-md transition-all ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-[14px] font-semibold rounded-md transition-all ${
               isActive("/") ? "text-[#22CA38] bg-green-50" : "text-gray-700 hover:text-[#22CA38] hover:bg-gray-100"
             }`}
           >
@@ -130,7 +132,7 @@ const Header: FC = () => {
 
           <Link
             href="/about-us"
-            className={`flex items-center gap-1.5 px-2.5 py-1.5 text-[14px] font-semibold rounded-md transition-all ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-[14px] font-semibold rounded-md transition-all ${
               isActive("/about-us") ? "text-[#22CA38] bg-green-50" : "text-gray-700 hover:text-[#22CA38] hover:bg-gray-100"
             }`}
           >
@@ -147,7 +149,7 @@ const Header: FC = () => {
                   onBlur={(e) => {
                     if (!e.currentTarget.contains(e.relatedTarget as Node)) closeDropdown();
                   }}
-                  className={`flex items-center gap-1.5 px-2.5 py-1.5 text-[14px] font-semibold rounded-md transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 text-[14px] font-semibold rounded-md transition-all ${
                     activeDropdown === item.label
                       ? "text-[#22CA38] bg-green-50"
                       : "text-gray-700 hover:text-[#22CA38] hover:bg-gray-100"
@@ -166,9 +168,9 @@ const Header: FC = () => {
                 <AnimatePresence>
                   {activeDropdown === item.label && (
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
+                      exit={{ opacity: 0, y: 8 }}
                       transition={{ duration: 0.2 }}
                       className="absolute left-0 top-full mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg overflow-hidden z-50"
                     >
@@ -205,7 +207,7 @@ const Header: FC = () => {
           })}
         </nav>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="lg:hidden p-2 rounded-md text-gray-700 hover:text-[#22CA38] hover:bg-gray-100 transition-all"
@@ -214,7 +216,7 @@ const Header: FC = () => {
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
@@ -228,7 +230,7 @@ const Header: FC = () => {
             />
             <motion.div
               key="drawer"
-              className="fixed top-0 right-0 h-full w-[85vw] max-w-sm bg-white z-50 shadow-lg flex flex-col"
+              className="fixed top-0 right-0 h-full w-[85vw] max-w-sm bg-white z-50 shadow-xl flex flex-col overflow-y-auto"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -240,7 +242,98 @@ const Header: FC = () => {
                   <X size={20} />
                 </button>
               </div>
-              {/* You can insert your mobile nav logic here if needed */}
+
+              <div className="flex flex-col px-4 py-4 space-y-2">
+                <Link
+                  href="/"
+                  onClick={closeMobileMenu}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-[15px] font-semibold ${
+                    isActive("/") ? "text-[#22CA38] bg-green-50" : "text-gray-700 hover:bg-gray-100 hover:text-[#22CA38]"
+                  }`}
+                >
+                  <Home size={18} />
+                  Home
+                </Link>
+
+                <Link
+                  href="/about-us"
+                  onClick={closeMobileMenu}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-[15px] font-semibold ${
+                    isActive("/about-us")
+                      ? "text-[#22CA38] bg-green-50"
+                      : "text-gray-700 hover:bg-gray-100 hover:text-[#22CA38]"
+                  }`}
+                >
+                  <Users size={18} />
+                  About Us
+                </Link>
+
+                {navigationItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={item.label} className="flex flex-col">
+                      <button
+                        onClick={() => toggleMobileDropdown(item.label)}
+                        className={`flex items-center justify-between w-full px-3 py-2 rounded-md text-[15px] font-semibold ${
+                          activeMobileDropdown === item.label
+                            ? "text-[#22CA38] bg-green-50"
+                            : "text-gray-700 hover:bg-gray-100 hover:text-[#22CA38]"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <Icon size={18} />
+                          {item.label}
+                        </div>
+                        <ChevronDown
+                          size={16}
+                          className={`transition-transform duration-300 ${
+                            activeMobileDropdown === item.label ? "rotate-180 text-[#22CA38]" : "text-gray-500"
+                          }`}
+                        />
+                      </button>
+
+                      <AnimatePresence>
+                        {activeMobileDropdown === item.label && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="ml-7 mt-1 border-l border-gray-200"
+                          >
+                            {item.items.map((sub) => {
+                              const SubIcon = sub.icon;
+                              return sub.external ? (
+                                <a
+                                  key={sub.href}
+                                  href={sub.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={closeMobileMenu}
+                                  className="flex items-center gap-2 px-3 py-2 text-[14px] text-gray-700 hover:text-[#22CA38] transition-all"
+                                >
+                                  <SubIcon size={15} className="text-[#22CA38]" />
+                                  {sub.label}
+                                </a>
+                              ) : (
+                                <Link
+                                  key={sub.href}
+                                  href={sub.href}
+                                  onClick={closeMobileMenu}
+                                  className="flex items-center gap-2 px-3 py-2 text-[14px] text-gray-700 hover:text-[#22CA38] transition-all"
+                                >
+                                  <SubIcon size={15} className="text-[#22CA38]" />
+                                  {sub.label}
+                                </Link>
+                              );
+                            })}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
+              </div>
             </motion.div>
           </>
         )}
