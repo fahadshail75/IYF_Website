@@ -4,6 +4,7 @@ import CampaignsSection from "@/components/home/Campaign";
 import EventosSection from "@/components/home/Events";
 import HeroSection from "@/components/home/HeroSection";
 import MagzineSwiper from "@/components/home/MagzinesSlider";
+import OurInitiatives from "@/components/home/OurInitiatives";
 // import RecentMagzines from "@/components/home/RecentMagzines";
 import Image from "next/image";
 import Link from "next/link";
@@ -128,7 +129,9 @@ The language and style of "The Milestone" are simple yet impactful, leaving a la
         <CampaignsSection campaigns={campaigns} />
         <EventosSection eventos={eventosData} />
       </section>
-      {/* IYF Islamic Book Library Section (moved after events) */}
+
+
+  {/* IYF Islamic Book Library Section (moved after events) */}
 
       <section className="w-full bg-gradient-to-br from-[#f6fff8] to-white py-10 md:py-20 border-t border-gray-100 mt-10">
         <div className="max-w-2xl mx-auto px-4 md:px-0 text-center flex flex-col items-center">
@@ -176,7 +179,10 @@ The language and style of "The Milestone" are simple yet impactful, leaving a la
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-4-4 4 4-4 4"/></svg>
           </Link>
         </div>
-      </section>
+  </section>
+
+  {/* Our Initiatives Section */}
+  <OurInitiatives />
     </>
   );
 }
