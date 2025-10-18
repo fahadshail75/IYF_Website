@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-// Modern navigation structure with icons
+// Modern navigation structure with icons - Updated Al-Huda Library
 const navigationItems = [
   {
     label: "Media",
@@ -63,10 +63,10 @@ const navigationItems = [
     ]
   },
   {
-    label: "Learn Islam",
+    label: "IYF Islamic Digital Library",
     icon: Book,
     items: [
-      { href: "/learn-islam/books", label: "Islamic Books", icon: BookOpen, external: false },
+      { href: "/learn-islam/books", label: "IYF Islamic Digital Library", icon: BookOpen, external: false },
       { href: "/learn-islam/blogs", label: "Blogs", icon: FileText, external: false },
     ]
   }
@@ -170,7 +170,7 @@ const Header: FC = () => {
         <div className="flex items-center justify-between gap-6">
           <Link href="/" className="flex-shrink-0 mr-4">
             <Image
-              src="/assets/black-logo.svg"
+              src="/assets/black-logo.png"
               alt="IYF Logo"
               width={220}
               height={64}
@@ -309,7 +309,7 @@ const Header: FC = () => {
             >
               <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200 bg-gray-50">
                 <Image
-                  src="/assets/black-logo.svg"
+                  src="/assets/black-logo.png"
                   alt="IYF Logo"
                   width={140}
                   height={40}
