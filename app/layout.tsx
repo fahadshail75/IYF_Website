@@ -85,14 +85,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Additional SEO meta tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="theme-color" content="#22CA38" />
         <link rel="apple-touch-icon" href="/assets/logo-IYF.png" />
         <meta name="format-detection" content="telephone=no" />
-        
+
         {/* Structured Data for SEO */}
         <script
           type="application/ld+json"
@@ -109,10 +109,11 @@ export default function RootLayout({
       </head>
       <body
         className={`${monteserrat.variable} antialiased`}
+        suppressHydrationWarning
       >
         <Header />
 
-        <main className="pt-[64px]">
+        <main className="pt-4 sm:pt-6 md:pt-8">
           {children}
         </main>
 

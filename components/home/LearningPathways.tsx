@@ -29,7 +29,7 @@ const learningPathways: LearningPathway[] = [
     highlight: "Start with foundations",
   },
   {
-    title: "Essential Reads",
+    title: "Al-Huda Library",
     description:
       "Curated books and study plans to build literacy across core Islamic sciences and personal development.",
     href: "/learn-islam/books",

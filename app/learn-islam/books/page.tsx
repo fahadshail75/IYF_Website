@@ -13,9 +13,9 @@ import {
 } from "lucide-react"; // Icon library for UI elements
 import type { Metadata } from "next";
 
-// SEO metadata for Islamic Books page
+// SEO metadata for Al-Huda Library page
 export const metadata: Metadata = {
-  title: "Islamic Books & Audio Lectures | Learn Islam",
+  title: "Al-Huda Library | Islamic Books & Audio Lectures",
   description: "Download free Islamic books in Urdu including Iqamat-e-Din, Quran ki Char Bunyadi Istilahain, and Durre Yateem. Listen to Tafheem-ul-Quran lectures by Maulana Maududi and more Islamic audio series.",
   keywords: [
     'Islamic books PDF',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     'Muslim youth learning'
   ],
   openGraph: {
-    title: "Islamic Books & Audio Lectures | IYF Learn Islam",
+    title: "Al-Huda Library | Islamic Books & Audio Lectures",
     description: "Access curated Islamic books and immersive audio lectures. Download PDFs and listen to Tafheem-ul-Quran, Seerah, and more.",
     images: ['/assets/books/covers/Iqamat e Din Islam ka Taqaza.jpg'],
     type: 'website',
@@ -129,11 +129,11 @@ const highlights = [
 
 // Main component for the Islamic Books page
 const IslamicBooksPage: FC = () => {
-  // Structured data for Books page
+  // Structured data for Al-Huda Library page
   const booksPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Islamic Books and Audio Lectures',
+    name: 'Al-Huda Library - Islamic Books and Audio Lectures',
     description: 'Curated collection of Islamic books and audio lectures for youth education',
     url: 'https://iyfindia.org/learn-islam/books',
     mainEntity: {
@@ -168,10 +168,39 @@ const IslamicBooksPage: FC = () => {
         
         {/* Content wrapper with z-10 to appear above decorative elements */}
         <div className="relative z-10 max-w-3xl space-y-6">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-sm font-semibold tracking-wide">
-            <Sparkles size={16} />
-            Learn Islam Series
+          {/* AL_HUDA Heading with Book Icon */}
+          <h2 className="font-extrabold text-white bg-black py-2 px-4 text-2xl sm:text-3xl md:text-4xl mb-3 tracking-wide flex items-center justify-center gap-2 w-fit">
+            {/* Open Book Icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="#22CA38"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 20c0-2.5-2.5-4-6-4H4a2 2 0 0 0-2 2v-13a2 2 0 0 1 2-2h4c3.5 0 4 1.5 4 4"
+              />
+              <path
+                stroke="#22CA38"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 20c0-2.5 2.5-4 6-4h2a2 2 0 0 1 2 2v-13a2 2 0 0 0-2-2h-4c-3.5 0-4 1.5-4 4"
+              />
+            </svg>
+            AL_HUDA
+          </h2>
+
+          {/* Badge */}
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-4 py-2 text-xs sm:text-sm font-semibold uppercase tracking-wide text-white mb-2">
+            IYF Islamic Digital Library
           </span>
+
           <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-bold leading-tight">
             Build your Islamic library with syllabus-ready books & immersive audio journeys
           </h1>

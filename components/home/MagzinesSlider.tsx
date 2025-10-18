@@ -59,14 +59,16 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
             key={index}
             className="transition-all ease-in-out delay-300"
           >
-            <div className="flex flex-col md:flex-row gap-8 items-start w-full">
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start w-full">
               {/* Text Section */}
-              <div className="space-y-4 flex-1">
+              <div className="space-y-4 flex-1 w-full md:w-auto">
                 <h3
-                  className={`font-semibold ${
-                    index === 1 
-                      ? "text-right jameel-font text-4xl md:text-5xl" 
-                      : "text-left text-2xl"
+                  className={`font-semibold break-words ${
+                    index === 1
+                      ? "text-right jameel-font text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
+                      : index === 2
+                      ? "text-center solaiman-lipi-font text-lg sm:text-xl md:text-2xl"
+                      : "text-left text-xl sm:text-2xl"
                   }`}
                 >
                   {magazine.title}
@@ -74,8 +76,10 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
                 <p
                   className={
                     index === 1
-                      ? "jameel-font text-lg md:text-xl text-gray-600 whitespace-pre-line text-right leading-loose"
-                      : "text-sm text-gray-600 whitespace-pre-line"
+                      ? "jameel-font text-base sm:text-lg md:text-xl text-gray-600 whitespace-pre-line text-right leading-loose"
+                      : index === 2
+                      ? "solaiman-lipi-font text-base sm:text-lg text-gray-600 whitespace-pre-line text-center leading-relaxed"
+                      : "text-sm sm:text-base text-gray-600 whitespace-pre-line"
                   }
                 >
                   {isMobile
@@ -97,13 +101,13 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
               </div>
 
               {/* Image */}
-              <div className="flex flex-col items-center gap-4 relative">
+              <div className="flex flex-col items-center gap-4 relative w-full md:w-auto">
                 <Image
                   src={magazine.image}
                   alt={magazine.title}
                   width={300}
                   height={400}
-                  className="object-cover"
+                  className="object-cover w-full sm:w-64 md:w-72 h-auto"
                 />
               </div>
             </div>

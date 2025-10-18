@@ -23,7 +23,7 @@ const IslamicLibrary: React.FC = () => {
           <div className="flex-1 text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full bg-[#22CA38]/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-[#22CA38] mb-4">
               <BookOpen size={18} />
-              IYF Islamic Library
+              Al-Huda Library
             </span>
             
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1B2B34] mb-4 leading-tight">

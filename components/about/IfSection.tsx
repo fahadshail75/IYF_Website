@@ -50,9 +50,9 @@ const IfSection = () => {
   ];
 
   return (
-    <section className="mb-14 xl:mb-20 2xl:mb-28">
+    <section className="mb-10 xl:mb-16 2xl:mb-24 px-2 sm:px-4 md:px-8">
       <motion.div
-        className="flex flex-col lg:flex-row items-start gap-8 md:gap-12 lg:gap-16 justify-between"
+        className="flex flex-col lg:flex-row items-start gap-6 md:gap-10 lg:gap-14 justify-between"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -60,7 +60,7 @@ const IfSection = () => {
       >
         <div className="lg:w-1/2">
           <motion.h2
-            className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 md:mb-8"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 md:mb-4 lg:mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -69,9 +69,9 @@ const IfSection = () => {
             <span className="text-[#22CA38]">IF</span> ...
           </motion.h2>
 
-          <div className="mb-6 lg:hidden">
+          <div className="mb-4 lg:hidden">
             <motion.div
-              className="rounded-2xl overflow-hidden shadow-xl ring-4 ring-[#22CA38]/10"
+              className="rounded-xl overflow-hidden shadow-md ring-2 ring-[#22CA38]/10"
               variants={imageVariants}
               initial="hidden"
               whileInView="visible"
@@ -79,8 +79,8 @@ const IfSection = () => {
             >
               <Image
                 src={"/assets/about/about-3.png"}
-                width={600}
-                height={400}
+                width={400}
+                height={260}
                 alt="IYF Vision"
                 className="w-full h-full object-cover"
               />
@@ -88,7 +88,7 @@ const IfSection = () => {
           </div>
 
           <motion.ul
-            className="space-y-4 md:space-y-5"
+            className="space-y-2 md:space-y-3 lg:space-y-4"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -97,11 +97,11 @@ const IfSection = () => {
             {listItems.map((item, index) => (
               <motion.li
                 key={index}
-                className="group flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-gradient-to-r from-green-50/30 to-transparent hover:from-green-50 hover:to-transparent transition-all duration-300"
+                className="group flex items-start gap-2 md:gap-3 p-2 md:p-3 rounded-lg bg-gradient-to-r from-green-50/30 to-transparent hover:from-green-50 hover:to-transparent transition-all duration-300"
                 variants={itemVariants}
               >
-                <div className="flex-shrink-0 w-2 h-2 mt-2.5 rounded-full bg-gradient-to-br from-[#22CA38] to-emerald-500 shadow-md group-hover:scale-125 transition-transform duration-300" />
-                <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-700 flex-1 text-justify">
+                <div className="flex-shrink-0 w-2 h-2 mt-2 rounded-full bg-gradient-to-br from-[#22CA38] to-emerald-500 shadow-md group-hover:scale-125 transition-transform duration-300" />
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg leading-snug sm:leading-normal md:leading-relaxed text-gray-700 flex-1 text-justify">
                   {item}
                 </p>
               </motion.li>
@@ -116,11 +116,11 @@ const IfSection = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <div className="rounded-2xl overflow-hidden shadow-2xl ring-4 ring-[#22CA38]/10 group hover:ring-[#22CA38]/20 transition-all duration-500">
+          <div className="rounded-xl overflow-hidden shadow-lg ring-2 ring-[#22CA38]/10 group hover:ring-[#22CA38]/20 transition-all duration-500">
             <Image
               src={"/assets/about/about-3.png"}
-              width={800}
-              height={600}
+              width={600}
+              height={400}
               alt="IYF Vision"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />

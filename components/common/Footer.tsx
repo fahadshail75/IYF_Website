@@ -23,7 +23,7 @@ const Footer = () => {
             <div className="mb-0 md:mb-10">
               <Link href="/" aria-label="IYF Home">
                 <Image
-                  src="/assets/Logo.svg"
+                  src="/assets/White-logo.png"
                   alt="Islamic Youth Federation of India Logo"
                   width={255}
                   height={74}
@@ -128,7 +128,7 @@ const Footer = () => {
                 <Link href="/departments">Departments</Link>
               </li>
               <li className="text-white text-sm md:text-base hover:text-[#22CA38] transition-colors duration-200">
-                <Link href="/learn-islam">Learn Islam</Link>
+                <Link href="/learn-islam/books">Al-Huda Library</Link>
               </li>
             </ul>
           </nav>

@@ -25,32 +25,37 @@ const itemVariants: Variants = {
 
 const PurposefulLifeSection: React.FC = () => {
   return (
-    <section className="mb-10 xl:mb-20 2xl:mb-[160px]">
+    <section className="mb-10 xl:mb-16 2xl:mb-24 px-2 sm:px-4 md:px-8">
       <motion.h2
-        className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-[32px] text-[#2F4858] text-center px-4"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        className="font-extrabold text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-center px-4 md:px-0 mb-6 sm:mb-8 md:mb-10 lg:mb-12 tracking-tight leading-tight"
+        initial={{ opacity: 0, y: 30, scale: 0.95 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        style={{
+          background: 'linear-gradient(135deg, #2F4858 0%, #22CA38 50%, #0F5127 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+          filter: 'drop-shadow(0 4px 8px rgba(34, 202, 56, 0.2))'
+        }}
       >
         Let&apos;s Live a Purposeful Life
       </motion.h2>
 
       <motion.p
-        className="my-5 sm:my-6 md:my-8 xl:my-12 text-center text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 max-w-5xl mx-auto leading-relaxed px-4"
+        className="mt-3 mb-8 text-center text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 max-w-4xl mx-auto leading-snug sm:leading-normal md:leading-relaxed px-2 md:px-0"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
       >
-        This world reminds us of our Creator. Allah gave us the Quran for
-        guidance and made youth a power for change. But many have
-        forgotten their purpose. To succeed, we must return to Allah, follow
-        His path, and use our youth for good.
+        This world reminds us of our Creator. Allah gave us the Quran for guidance and made youth a power for change. But many have forgotten their purpose. To succeed, we must return to Allah, follow His path, and use our youth for good.
       </motion.p>
 
       <motion.div
-        className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 md:gap-8 lg:gap-10"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
@@ -76,13 +81,13 @@ const PurposefulLifeSection: React.FC = () => {
         ].map(({ title, text }, i) => (
           <motion.div
             key={i}
-            className="p-5 sm:p-6 md:p-8 lg:p-10 border-t-4 sm:border-t-[5px] border-[#22CA38] bg-white shadow-lg hover:shadow-xl rounded-lg space-y-3 sm:space-y-4 md:space-y-6 transition-shadow duration-300"
+            className="p-4 sm:p-5 md:p-6 lg:p-8 border-t-4 sm:border-t-[5px] border-[#22CA38] bg-white shadow-lg hover:shadow-xl rounded-lg space-y-2 sm:space-y-3 md:space-y-4 transition-shadow duration-300"
             variants={itemVariants}
           >
-            <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900 leading-snug">
+            <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-900 leading-snug">
               {title}
             </h3>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-gray-700 text-justify">
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg leading-snug sm:leading-normal md:leading-relaxed text-gray-700 text-justify">
               {text}
             </p>
           </motion.div>
