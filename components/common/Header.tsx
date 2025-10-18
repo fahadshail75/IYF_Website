@@ -62,10 +62,10 @@ const navigationItems = [
     ]
   },
   {
-    label: "IYF Islamic Digital Library",
+    label: "AL_HUDA",
     icon: Book,
     items: [
-      { href: "/learn-islam/books", label: "AL_HUDA", icon: BookOpen, external: false },
+      { href: "/learn-islam/books", label: "IYF Islamic Digital Library", icon: BookOpen, external: false },
       { href: "/learn-islam/blogs", label: "Blogs", icon: FileText, external: false },
     ]
   }
