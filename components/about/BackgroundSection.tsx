@@ -4,32 +4,18 @@ import Image from "next/image"; // or your Image component
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.2,
-      ease: "easeOut",
-      staggerChildren: 0,
-    },
-  },
+  visible: { opacity: 1, transition: { duration: 0.25 } },
 };
 
 const imageVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.96 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut",
-    }
-  },
+  hidden: { opacity: 0, y: 8 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
 export default function BackgroundSection() {
   return (
     <section className="mb-10 xl:mb-16 2xl:mb-24 px-2 sm:px-4 md:px-8">
-      {/* Floated image container on the right */}
+      {/* Desktop floated image (hidden on mobile) */}
       <motion.div
         className="hidden md:block"
         initial="hidden"
@@ -48,7 +34,7 @@ export default function BackgroundSection() {
           variants={imageVariants}
         >
           <Image
-            src={"/assets/about/about-1.png"}
+            src={'/assets/about/about-1.png'}
             width={600}
             height={400}
             alt="About IYF Background"
@@ -57,25 +43,16 @@ export default function BackgroundSection() {
         </motion.div>
       </motion.div>
 
-      <motion.h2
-        className="text-lg sm:text-xl font-bold text-gray-900 mb-4 md:hidden text-center"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-      >
-        The Background of Establishment of IYF
-      </motion.h2>
-
+      {/* Mobile image (hidden on desktop) */}
       <motion.div
         className="md:hidden mb-4 rounded-xl overflow-hidden shadow-md"
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={{ duration: 0.3 }}
       >
         <Image
-          src={"/assets/about/about-1.png"}
+          src={'/assets/about/about-1.png'}
           width={400}
           height={260}
           alt="About IYF Background"
@@ -83,13 +60,24 @@ export default function BackgroundSection() {
         />
       </motion.div>
 
-      {/* Text content */}
+      {/* Mobile heading (visible on mobile, rendered after the image) */}
+      <motion.h2
+        className="text-lg sm:text-xl font-bold text-gray-900 mt-2 mb-4 md:hidden text-left max-w-3xl mx-auto"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.2 }}
+      >
+        The Background of Establishment of IYF
+      </motion.h2>
+
+      {/* Text content (desktop shows heading inside) */}
       <motion.div
         className="relative md:border-l-4 border-[#22CA38] py-3 sm:py-4 md:py-5 pl-0 md:pl-6 lg:py-8 lg:pl-10 text-gray-800 bg-gradient-to-r md:from-green-50/60 md:to-transparent rounded-r-xl"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.2, ease: "easeOut", delay: 0 }}
+        transition={{ duration: 0.2 }}
       >
         <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 sm:mb-4 md:mb-5 lg:mb-6 hidden md:block">
           The Background of Establishment of IYF

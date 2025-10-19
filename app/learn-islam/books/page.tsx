@@ -7,7 +7,6 @@ import {
   BookOpen,
   Download,
   Headphones,
-  Sparkles,
   Clock,
   MessageCircle,
 } from "lucide-react"; // Icon library for UI elements
@@ -120,11 +119,6 @@ const highlights = [
     description: "High-quality lectures and storytelling for on-the-go inspiration and revision.",
     icon: Headphones,
   },
-  {
-    title: "Actionable Guides",
-    description: "Downloadable PDFs complemented with reflective prompts and project ideas.",
-    icon: Sparkles,
-  },
 ];
 
 // Main component for the Islamic Books page
@@ -167,67 +161,50 @@ const IslamicBooksPage: FC = () => {
         <div className="absolute inset-y-0 right-[-80px] hidden lg:block w-[340px] rounded-full bg-white/10 blur-3xl" />
         
         {/* Content wrapper with z-10 to appear above decorative elements */}
-        <div className="relative z-10 max-w-3xl space-y-6">
-          {/* AL_HUDA Heading with Book Icon */}
-          <h2 className="font-extrabold text-white bg-black py-2 px-4 text-2xl sm:text-3xl md:text-4xl mb-3 tracking-wide flex items-center justify-center gap-2 w-fit">
-            {/* Open Book Icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="#22CA38"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M12 20c0-2.5-2.5-4-6-4H4a2 2 0 0 0-2 2v-13a2 2 0 0 1 2-2h4c3.5 0 4 1.5 4 4"
-              />
-              <path
-                stroke="#22CA38"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M12 20c0-2.5 2.5-4 6-4h2a2 2 0 0 1 2 2v-13a2 2 0 0 0-2-2h-4c-3.5 0-4 1.5-4 4"
-              />
-            </svg>
-            AL_HUDA
-          </h2>
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          {/* Left: text content */}
+          <div className="col-span-1 lg:col-span-7 space-y-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-bold leading-tight">
+              Al‑Huda — the IYF Islamic Digital Library
+            </h1>
+            <p className="text-white/90 text-base sm:text-lg leading-relaxed max-w-2xl">
+              Al‑Huda provides free, syllabus-aligned Islamic books and carefully curated audio lectures in multiple languages. Designed for students, teachers and lifelong learners, the Library offers downloadable PDFs, guided learning pathways, and narrated lessons to support study, reflection and practical application of authentic knowledge.
+            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="#pdf-library"
+                className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#1B2B34] shadow-sm transition hover:bg-white/80"
+              >
+                Browse PDF Library
+                <ArrowRight size={18} />
+              </Link>
+              <Link
+                href="#audio-collection"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/60 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Listen to Audio Collection
+                <Headphones size={18} />
+              </Link>
+            </div>
+          </div>
 
-          {/* Badge */}
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-4 py-2 text-xs sm:text-sm font-semibold uppercase tracking-wide text-white mb-2">
-            IYF Islamic Digital Library
-          </span>
-
-          <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-bold leading-tight">
-            Build your Islamic library with syllabus-ready books & immersive audio journeys
-          </h1>
-          <p className="text-white/85 text-base sm:text-lg leading-relaxed">
-            Explore carefully curated PDFs for self-study and structured courses, then switch to audio narrations for reflective listening. Each resource is selected to make learning engaging, authentic, and actionable for today’s youth.
-          </p>
-          <div className="flex flex-wrap items-center gap-4">
-            <Link
-              href="#pdf-library"
-              className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#1B2B34] shadow-sm transition hover:bg-white/80"
-            >
-              Browse PDF Library
-              <ArrowRight size={18} />
-            </Link>
-            <Link
-              href="#audio-collection"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/60 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              Listen to Audio Collection
-              <Headphones size={18} />
-            </Link>
+          {/* Right: logo card placed into empty space */}
+          <div className="col-span-1 lg:col-span-5 flex justify-end">
+            <div className="w-full max-w-xs lg:max-w-sm p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 shadow-lg flex items-center justify-center">
+              <Image
+                src="/assets/Alhudalogo.png"
+                alt="AL_HUDA - IYF Islamic Digital Library"
+                width={520}
+                height={160}
+                className="h-20 md:h-24 lg:h-28 xl:h-32 w-auto"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Features/Highlights Section - 3 column grid showcasing key benefits */}
-      <section className="mt-12 grid gap-6 md:grid-cols-3" aria-label="Learning highlights">
+  <section className="mt-12 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-2" aria-label="Learning highlights">
         {/* Map through highlights array to create feature cards */}
         {highlights.map(({ title, description, icon: Icon }) => (
           <div

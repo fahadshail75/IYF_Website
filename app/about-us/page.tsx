@@ -3,12 +3,13 @@ import IfSection from "@/components/about/IfSection";
 import MotivesSection from "@/components/about/MotivesSection";
 import PurposefulLifeSection from "@/components/about/PurposeFulLifeSection";
 import React from "react";
+import { Users } from "lucide-react";
 import type { Metadata } from "next";
 
 // SEO metadata for About Us page
 export const metadata: Metadata = {
   title: "About Us | Our Mission & Vision",
-  description: "Learn about Islamic Youth Federation of India's mission to prepare virtuous, competent, and devoted Muslim youth. Discover our goals, objectives, and commitment to establishing Deen in personal and social life.",
+  description: "Learn about Islamic Youth Federation of India&apos;s mission to prepare virtuous, competent, and devoted Muslim youth. Discover our goals, objectives, and commitment to establishing Deen in personal and social life.",
   keywords: [
     'IYF mission',
     'IYF vision',
@@ -50,6 +51,21 @@ const page = () => {
 
   return (
     <main className="max-w-[1600px] bg-white w-full px-4 sm:px-5 md:px-10 2xl:px-20 mx-auto">
+      {/* Top label and main heading styled like the Our Initiatives label */}
+      <div className="max-w-6xl mx-auto px-4 md:px-8 text-center mt-8">
+        <h2 className="font-extrabold text-white bg-black py-1 px-3 text-2xl sm:text-3xl md:text-4xl mb-3 tracking-wide inline-flex items-center gap-2 w-fit mx-auto">
+          <Users size={22} className="text-[#22CA38]" />
+          About Us
+        </h2>
+
+        <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl text-[#1B2B34] mb-4 leading-tight">
+          Our Mission & Vision
+        </h1>
+
+        <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+          Learn about IYF India&apos;s mission to prepare virtuous, competent, and devoted Muslim youth — our goals, objectives, and commitment to establishing Deen in personal and social life.
+        </p>
+      </div>
       <BackgroundSection />
       <MotivesSection sectionData={sectionData} />
       <IfSection />
