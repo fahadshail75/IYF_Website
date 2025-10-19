@@ -19,16 +19,18 @@
 
 @font-face {
   font-family: 'JameelNooriNastaleeq';
-  src: url('/assets/fonts/Jameel Noori Nastaleeq Regular.ttf') format('truetype');
+  src: url('/assets/fonts/Jameel%20Noori%20Nastaleeq%20Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'SolaimanLipi';
-  src: url('/assets/fonts/SolaimanLipi.ttf') format('truetype');
+  src: url('/assets/fonts/SolaimanLipi_20-04-07.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 
