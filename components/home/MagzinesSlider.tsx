@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 interface Magazine {
   title: string;
@@ -41,7 +42,7 @@ export default function MagzinesSlider({ magazines }: RecentMagazinesProps) {
   useEffect(() => {
     if (isAutoPlaying && magazines.length > 1) {
       autoPlayRef.current = setInterval(() => {
-        nextSlide();
+        setCurrentSlide((prev) => (prev + 1) % magazines.length);
       }, 5000);
     }
 
@@ -56,17 +57,17 @@ export default function MagzinesSlider({ magazines }: RecentMagazinesProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
-        prevSlide();
+        setCurrentSlide((prev) => (prev - 1 + magazines.length) % magazines.length);
         setIsAutoPlaying(false);
       } else if (e.key === "ArrowRight") {
-        nextSlide();
+        setCurrentSlide((prev) => (prev + 1) % magazines.length);
         setIsAutoPlaying(false);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [magazines.length]);
 
   const handleMouseEnter = () => {
     setIsAutoPlaying(false);
@@ -107,12 +108,8 @@ export default function MagzinesSlider({ magazines }: RecentMagazinesProps) {
 
 কুরআনের নির্দেশ—"হে ইমানদারগণ, আল্লাহকে ভয় করো এবং সত্য কথা বলো" এবং হাদীসের ঘোষণা—"জালেম শাসকের সামনে সত্য কথা বলা উত্তম জিহাদ"—একে পথনির্দেশ হিসেবে গ্রহণ করে সত্যবাক সত্য ও ন্যায়ের পক্ষে যুক্তিনির্ভর ও চিন্তাজাগানিয়া লেখা প্রকাশ করে.`;
 
-            // Provide a specific English description for "The Milestone" magazine (full content)
-            const milestoneDescription = `"The Milestone" is a high-quality English magazine published by IYF (Islamic Youth Federation), aiming to provide intellectual, spiritual, and moral guidance to the youth. The magazine seeks to present Islamic teachings in a modern and practical context, helping young people understand their true purpose in life. It features thought-provoking articles on social reform, character building, and awakening of the Muslim Ummah.
-
-Verses from the Qur'an, Hadith, and inspiring historical stories are beautifully woven with contemporary issues to motivate readers towards positive action. The contributions of young writers and scholars are especially encouraged, giving them a platform to express their ideas and talents.
-
-The language and style of "The Milestone" are simple yet impactful, leaving a lasting impression on the hearts and minds of its audience. It also includes sections on literature, poetry, and introductions to influential personalities, further enriching its intellectual and literary value. Overall, this magazine serves as a guiding light for the youth, inspiring them with hope, confidence, and a sense of responsibility towards society and the Ummah.`;
+            // Provide a specific English description for "The Milestone" magazine (short)
+            const milestoneDescription = `The Milestone is an Islamic magazine focusing on the current problems of the Muslim Ummah and the youth. It works in inculcating the Islamic spirit in the youth and helps them in getting acquainted with the current happenings in India and around the world.`;
 
               const isMilestone = !isUrdu && !isBangla && /milestone/i.test(magazine.title);
 
@@ -159,18 +156,20 @@ The language and style of "The Milestone" are simple yet impactful, leaving a la
                   <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-center md:items-start w-full">
                     {/* Image Section */}
                     <div 
-                      className={`flex-shrink-0 w-full sm:w-80 md:w-72 lg:w-80 ${
+                      className={`flex-shrink-0 w-full sm:w-64 md:w-56 lg:w-64 ${
                         isUrdu ? 'md:order-2' : 'md:order-1'
                       }`}
                     >
                       <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <img 
-                          src={magazine.image} 
-                          alt={`${magazine.title} magazine cover`}
-                          className="w-full h-full object-cover"
-                          loading={index === 0 ? "eager" : "lazy"}
-                        />
-                      </div>
+                          <Image
+                            src={magazine.image}
+                            alt={`${magazine.title} magazine cover`}
+                            fill
+                            sizes="(max-width: 640px) 100vw, 320px"
+                            className="object-cover"
+                            priority={index === 0}
+                          />
+                        </div>
                     </div>
 
                     {/* Text Section */}
@@ -181,13 +180,16 @@ The language and style of "The Milestone" are simple yet impactful, leaving a la
                       dir={isUrdu ? "rtl" : "ltr"}
                     >
                       <h3 className={titleClass}>{magazine.title}</h3>
-                      <p className={descClass}>{displayText}</p>
+                      {/* Read more toggle for long English descriptions on small screens */}
+                      <p className={descClass}>
+                        {displayText}
+                      </p>
                       <div className={isUrdu ? "flex md:justify-end" : ""}>
                         <a 
                           href={buildWhatsAppUrl(magazine.title)} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-2 rounded-lg bg-green-600 px-5 py-2.5 md:px-6 md:py-3 text-sm md:text-base font-medium text-white transition-all hover:bg-green-700 hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                          className="inline-flex items-center justify-center gap-2 rounded-lg bg-green-600 px-4 py-3 md:px-6 md:py-3 text-sm md:text-base font-medium text-white transition-all hover:bg-green-700 hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                           aria-label={`Subscribe to ${magazine.title} via WhatsApp`}
                         >
                           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
