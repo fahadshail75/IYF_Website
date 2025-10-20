@@ -58,7 +58,7 @@ const page = () => {
           About Us
         </h2>
 
-        <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl text-[#1B2B34] mb-4 leading-tight">
+        <h1 className="font-extrabold text-2xl sm:text-3xl md:text-5xl text-[#1B2B34] mb-4 leading-tight">
           Our Mission & Vision
         </h1>
 
