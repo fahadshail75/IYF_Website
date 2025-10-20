@@ -29,7 +29,7 @@ const PurposefulLifeSection: React.FC = () => {
     <section className="mb-10 xl:mb-16 2xl:mb-24 px-2 sm:px-4 md:px-8">
       <div className="w-full flex justify-center">
         <motion.h2
-          className="font-extrabold text-white bg-black py-1 px-3 text-2xl sm:text-3xl md:text-4xl mb-3 tracking-wide flex items-center justify-center gap-2 w-fit mx-auto"
+          className="font-extrabold text-[#1B2B34] py-1 px-3 text-xl sm:text-2xl md:text-4xl mb-3 tracking-wide flex items-center justify-center gap-2 w-fit mx-auto"
           role="heading"
           aria-label="Let's Live a Purposeful Life"
           initial={{ opacity: 0, y: 30, scale: 0.95 }}
@@ -37,7 +37,7 @@ const PurposefulLifeSection: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <Target size={22} className="text-[#22CA38]" aria-hidden />
+          <Target className="text-[#22CA38]" size={18} aria-hidden />
           Let&apos;s Live a Purposeful Life
         </motion.h2>
       </div>
@@ -51,14 +51,7 @@ const PurposefulLifeSection: React.FC = () => {
       >
         This world reminds us of our Creator. Allah gave us the Quran for guidance and made youth a power for change. But many have forgotten their purpose. To succeed, we must return to Allah, follow His path, and use our youth for good.
       </motion.p>
-      <div className="flex justify-center mb-8">
-        <a
-          href="#"
-          className="inline-flex items-center gap-2 bg-[#22CA38] hover:bg-[#1db832] text-white text-sm sm:text-base px-4 py-2 rounded-lg shadow-md transition-colors duration-200"
-        >
-          Learn More
-        </a>
-      </div>
+      {/* CTA removed as requested */}
 
       <motion.div
         className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12"
