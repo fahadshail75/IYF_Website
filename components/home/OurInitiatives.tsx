@@ -7,32 +7,37 @@ import { Sparkles } from "lucide-react";
 const initiatives = [
   {
     logo: "/assets/home/Alhuda.svg",
-    name: "Al-Huda",
-    description: "Islamic Digital Library",
+    description: "Digital Islamic Library",
     href: "/learn-islam/books",
   },
   {
     logo: "/assets/home/milestone.svg",
-    name: "The Milestone",
-    description: "English Magazine",
+    description: "Monthly English Magazine",
     href: "https://themilestone.iyfindia.org/",
   },
   {
     logo: "/assets/home/naqusheRaah.svg",
-    name: "نقوشِ راہ",
-    description: "Urdu Magazine",
+    description: "Monthly Urdu Magazine",
     href: "#",
   },
   {
     logo: "/assets/home/SatyaBak.svg",
-    name: "সত্যবাক",
-    description: "Bengali Magazine",
+    description: "Monthly Bengali Magazine",
     href: "https://bengali.iyfindia.org/satyabaak/",
   },
   {
     logo: "/assets/NoorLogo.png",
-    name: "Noor",
-    description: "Noor Initiative",
+    description: "Quarterly Bengali Magazine for Children",
+    href: "#",
+  },
+  {
+    logo: "/assets/Karwan-e-Uqab%20Logo.png",
+    description: "IYF Children Wing",
+    href: "#",
+  },
+  {
+    logo: "/assets/Najmus%20Saqib%20Logo.png",
+    description: "Monthly Urdu Wall Magazine for Children.",
     href: "#",
   },
 ];
@@ -120,15 +125,13 @@ export default function OurInitiatives() {
                     <div className="w-full h-24 md:h-28 flex items-center justify-center mb-4 bg-gray-50 group-hover:bg-[#22CA38]/5 rounded-xl transition-colors duration-350">
                       <Image
                         src={initiative.logo}
-                        alt={initiative.name}
+                        alt={initiative.description}
                         width={140}
                         height={80}
                         className="object-contain h-auto w-auto max-h-20 md:max-h-24"
                       />
                     </div>
-                    <h3 className="font-bold text-lg md:text-xl text-[#1B2B34] mb-2 text-center">
-                      {initiative.name}
-                    </h3>
+                    
                     <p className="text-gray-500 text-xs md:text-sm text-center leading-relaxed">
                       {initiative.description}
                     </p>
