@@ -62,13 +62,13 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
                 <div className={`flex flex-col-reverse md:flex-row gap-3 md:gap-4 ${isUrdu ? 'items-center md:items-start' : 'items-start'} w-full`}>
                   {/* Text Section */}
                   <div
-                    className={`space-y-3 flex-1 px-2 md:px-0 ${isUrdu ? 'jameel-font text-right md:text-right' : isBangla ? 'solaiman-lipi-font text-left' : 'text-left'}`}
+                    className={`space-y-3 flex-1 px-2 md:px-0 text-left`}
                     dir={isUrdu ? 'rtl' : 'ltr'}
                   >
-                    <h3 className="text-lg sm:text-xl font-semibold">
+                    <h3 className={`text-lg sm:text-xl font-semibold ${isUrdu ? 'jameel-font text-right md:text-right' : isBangla ? 'solaiman-lipi-font text-left' : ''}`}>
                       {magazine.title}
                     </h3>
-                    <p className="text-base sm:text-lg text-gray-600 whitespace-pre-line">
+                    <p className={`${isUrdu ? 'jameel-font text-base sm:text-lg text-gray-600 whitespace-pre-line text-right leading-loose' : isBangla ? 'solaiman-lipi-font text-base sm:text-lg text-gray-600 whitespace-pre-line text-left leading-relaxed' : 'text-base sm:text-lg text-gray-600 whitespace-pre-line'}`}>
                       {magazine.description}
                     </p>
                     {/* WhatsApp subscription CTA with prefilled message */}
