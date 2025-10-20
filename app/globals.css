@@ -19,18 +19,23 @@
 
 @font-face {
   font-family: 'JameelNooriNastaleeq';
-  src: url('/assets/fonts/Jameel%20Noori%20Nastaleeq%20Regular.ttf') format('truetype');
+  /* include both encoded and raw filenames as fallbacks */
+  src: url('/assets/fonts/Jameel%20Noori%20Nastaleeq%20Regular.ttf') format('truetype'),
+       url('/assets/fonts/Jameel Noori Nastaleeq Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0600-06FF; /* Arabic/Urdu block */
 }
 
 @font-face {
   font-family: 'SolaimanLipi';
-  src: url('/assets/fonts/SolaimanLipi_20-04-07.ttf') format('truetype');
+  src: url('/assets/fonts/SolaimanLipi_20-04-07.ttf') format('truetype'),
+       url('/assets/fonts/SolaimanLipi_20-04-07.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0980-09FF; /* Bengali block */
 }
 
 
@@ -95,9 +100,9 @@ body {
 
 
 .jameel-font {
-  font-family: 'JameelNooriNastaleeq', serif;
+  font-family: 'JameelNooriNastaleeq', serif !important;
 }
 
 .solaiman-lipi-font {
-  font-family: 'SolaimanLipi', sans-serif;
+  font-family: 'SolaimanLipi', sans-serif !important;
 }
