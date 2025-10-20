@@ -15,6 +15,10 @@ const ComingSoon: FC<ComingSoonProps> = ({
   description = "We're working hard to bring you this page. Stay tuned for updates!",
   category 
 }) => {
+  const isTitleUrdu = /[\u0600-\u06FF]/.test(title || "");
+  const isTitleBangla = /[\u0980-\u09FF]/.test(title || "");
+  const isDescUrdu = /[\u0600-\u06FF]/.test(description || "");
+  const isDescBangla = /[\u0980-\u09FF]/.test(description || "");
   return (
     <section
       className="relative flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100"
@@ -42,12 +46,18 @@ const ComingSoon: FC<ComingSoonProps> = ({
         )}
 
         {/* Title */}
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        <h1
+          className={`text-4xl md:text-5xl font-bold text-gray-900 mb-6 ${isTitleUrdu ? 'jameel-font text-right' : isTitleBangla ? 'solaiman-lipi-font' : ''}`}
+          {...(isTitleUrdu ? { dir: 'rtl' } : {})}
+        >
           {title}
         </h1>
 
         {/* Description */}
-        <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+        <p
+          className={`text-lg text-gray-600 mb-8 leading-relaxed ${isDescUrdu ? 'jameel-font text-right' : isDescBangla ? 'solaiman-lipi-font' : ''}`}
+          {...(isDescUrdu ? { dir: 'rtl' } : {})}
+        >
           {description}
         </p>
 

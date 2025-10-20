@@ -73,11 +73,7 @@ export default function Home() {
   const magazines = [
     {
       title: "The Milestone",
-      description: `The Milestone" is a high-quality English magazine published by IYF (Islamic Youth Federation), aiming to provide intellectual, spiritual, and moral guidance to the youth. The magazine seeks to present Islamic teachings in a modern and practical context, helping young people understand their true purpose in life. It features thought-provoking articles on social reform, character building, and awakening of the Muslim Ummah.
-
-Verses from the Qur'an, Hadith, and inspiring historical stories are beautifully woven with contemporary issues to motivate readers towards positive action. The contributions of young writers and scholars are especially encouraged, giving them a platform to express their ideas and talents.
-
-The language and style of "The Milestone" are simple yet impactful, leaving a lasting impression on the hearts and minds of its audience. It also includes sections on literature, poetry, and introductions to influential personalities, further enriching its intellectual and literary value. Overall, this magazine serves as a guiding light for the youth, inspiring them with hope, confidence, and a sense of responsibility towards society and the Ummah.`,
+    description: `The Milestone is an Islamic magazine focusing on the current problems of the Muslim Ummah and the youth. It works in inculcating the Islamic spirit in the youth and helps them in getting acquainted with the current happenings in India and around the world.`,
       image: "/assets/home/milestone.png",
     },
     {

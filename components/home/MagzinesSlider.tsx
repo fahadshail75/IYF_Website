@@ -24,14 +24,15 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
 
   return (
     <section className="bg-white relative py-6 md:py-8">
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-800">
-        Recent Magazines
-        <div className="flex justify-center mt-2">
-          <Separator />
-        </div>
-      </h2>
+      <div className="max-w-5xl mx-auto px-4">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-800">
+          Recent Magazines
+          <div className="flex justify-center mt-2">
+            <Separator />
+          </div>
+        </h2>
 
-      <Swiper
+        <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={isMobile ? 12 : 30}
         slidesPerView={1}
@@ -47,7 +48,7 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
           640: { slidesPerView: 1, spaceBetween: 20 },
           768: { slidesPerView: 1, spaceBetween: 30 },
         }}
-      >
+  >
         {magazines.map((magazine, index) => (
           (() => {
             const isUrdu = /[\u0600-\u06FF]/.test(magazine.title + magazine.description);
@@ -58,20 +59,17 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
                 key={index}
                 className="transition-all ease-in-out delay-300 py-2"
               >
-                <div className="flex flex-col-reverse md:flex-row gap-3 md:gap-4 items-center md:items-start w-full">
+                <div className={`flex flex-col-reverse md:flex-row gap-3 md:gap-4 ${isUrdu ? 'items-center md:items-start' : 'items-start'} w-full`}>
                   {/* Text Section */}
-                  <div className="space-y-2 flex-1 px-2 md:px-0" dir={isUrdu ? 'rtl' : 'ltr'}>
-                    <h3
-                      className={`text-base sm:text-lg font-semibold ${isUrdu ? 'text-right jameel-font' : isBangla ? 'text-center sm:text-left solaiman-lipi-font' : 'text-center sm:text-left'}`}
-                    >
+                  <div
+                    className={`space-y-3 flex-1 px-2 md:px-0 ${isUrdu ? 'jameel-font text-right md:text-right' : isBangla ? 'solaiman-lipi-font text-left' : 'text-left'}`}
+                    dir={isUrdu ? 'rtl' : 'ltr'}
+                  >
+                    <h3 className="text-lg sm:text-xl font-semibold">
                       {magazine.title}
                     </h3>
-                    <p className={`${isUrdu ? 'jameel-font text-sm' : isBangla ? 'solaiman-lipi-font text-sm' : 'text-sm sm:text-base'} text-gray-600 whitespace-pre-line ${isUrdu ? 'text-right' : 'text-center sm:text-left'}`}>
-                      {isMobile
-                        ? magazine.description.length > 200
-                          ? magazine.description.slice(0, 200) + "..."
-                          : magazine.description
-                        : magazine.description}
+                    <p className="text-base sm:text-lg text-gray-600 whitespace-pre-line">
+                      {magazine.description}
                     </p>
                     {/* WhatsApp subscription CTA with prefilled message */}
                     <a
@@ -89,7 +87,7 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
                   </div>
 
                   {/* Image */}
-                  <div className="flex flex-col items-center gap-3 relative w-full md:w-auto">
+                  <div className={`flex flex-col ${isUrdu ? 'items-center md:items-start' : 'items-start'} gap-3 relative w-full md:w-auto`}>
                     <Image
                       src={magazine.image}
                       alt={magazine.title}
@@ -104,6 +102,8 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
           })()
         ))}
       </Swiper>
+
+      </div>
 
       {/* Pagination Dots */}
       <div className="custom-pagination flex justify-center mt-3 space-x-1" />
