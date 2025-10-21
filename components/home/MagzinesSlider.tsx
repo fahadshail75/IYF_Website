@@ -87,7 +87,7 @@ export default function RecentMagazines({ magazines }: RecentMagazinesProps) {
                   </div>
 
                   {/* Image */}
-                  <div className={`flex flex-col ${isUrdu ? 'items-center md:items-start' : 'items-start'} gap-3 relative w-full md:w-auto`}>
+                  <div className={`flex flex-col ${isMobile ? 'items-center' : isUrdu ? 'items-center md:items-start' : 'items-start'} gap-3 relative w-full md:w-auto`}>
                     <Image
                       src={magazine.image}
                       alt={magazine.title}

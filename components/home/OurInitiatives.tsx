@@ -28,7 +28,7 @@ const initiatives = [
   {
     logo: "/assets/NoorLogo.png",
     description: "Quarterly Bengali Magazine for Children",
-    href: "#",
+    href: "https://bengali.iyfindia.org/noor/",
   },
   {
     logo: "/assets/Karwan-e-Uqab%20Logo.png",

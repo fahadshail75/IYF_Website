@@ -51,14 +51,13 @@ const page = () => {
 
   return (
     <main className="max-w-[1600px] bg-white w-full px-4 sm:px-5 md:px-10 2xl:px-20 mx-auto">
-      {/* Top label and main heading styled like the Our Initiatives label */}
       <div className="max-w-6xl mx-auto px-4 md:px-8 text-center mt-8">
-        <h2 className="font-extrabold text-white bg-black py-1 px-3 text-2xl sm:text-3xl md:text-4xl mb-3 tracking-wide inline-flex items-center gap-2 w-fit mx-auto">
-          <Users size={22} className="text-[#22CA38]" />
-          About Us
+  <h2 className="font-extrabold bg-[#22CA38] py-1 px-3 text-lg sm:text-xl md:text-3xl lg:text-4xl mb-3 tracking-wide inline-flex items-center gap-2 w-fit mx-auto">
+          <Users size={18} className="text-black" />
+          <span className="text-black">About Us</span>
         </h2>
 
-        <h1 className="font-extrabold text-2xl sm:text-3xl md:text-5xl text-[#1B2B34] mb-4 leading-tight">
+        <h1 className="font-extrabold text-green-600 text-lg sm:text-xl md:text-3xl mb-4 leading-tight">
           Our Mission & Vision
         </h1>
 
