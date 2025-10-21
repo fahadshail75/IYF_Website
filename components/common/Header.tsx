@@ -18,57 +18,61 @@ import {
   Building,
   Heart,
   Archive,
-  Book,
+  Book
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
+// Modern navigation structure with icons - Updated Al-Huda Library
 const navigationItems = [
   {
     label: "Media",
     icon: Newspaper,
     items: [
-      { href: "/media/press-release", label: "Press Release", icon: Newspaper },
-      { href: "/media/events-activities", label: "Events & Activities", icon: Calendar },
-      { href: "/media/articles", label: "Articles", icon: FileText },
-    ],
+      { href: "/media/press-release", label: "Press Release", icon: Newspaper, external: false },
+      { href: "/media/events-activities", label: "Events & Activities", icon: Calendar, external: false },
+      { href: "/media/articles", label: "Articles", icon: FileText, external: false },
+    ]
   },
   {
     label: "Magazines",
     icon: BookOpen,
     items: [
-      { href: "/magazines/urdu", label: "Urdu - Nuqoosh e Raah", icon: BookOpen },
+      { href: "/magazines/urdu", label: "Urdu - Nuqoosh e Raah", icon: BookOpen, external: false },
       { href: "https://themilestone.iyfindia.org/", label: "English - The Milestone", icon: BookOpen, external: true },
       { href: "https://bengali.iyfindia.org/tag/bengali-magazine/", label: "Bangla - Satyabaak", icon: BookOpen, external: true },
-    ],
+  { href: "/coming-soon?magazine=karwan-e-uqab", label: "Karwan-e-Uqab (Children Wing)", icon: BookOpen, external: false },
+  { href: "/coming-soon?magazine=najmus-saqib", label: "Najmus Saqib (Urdu Wall Magazine)", icon: BookOpen, external: false },
+  { href: "https://bengali.iyfindia.org/noor/", label: "Noor (Bengali Children Magazine)", icon: BookOpen, external: true },
+    ]
   },
   {
     label: "Courses",
     icon: GraduationCap,
     items: [
-      { href: "/courses/quran", label: "Quran Course", icon: BookOpen },
-      { href: "/courses/hadees", label: "Hadees Course", icon: BookOpen },
-      { href: "/courses/seerat", label: "Seerat Course", icon: BookOpen },
-      { href: "/courses/fiqh", label: "Fiqh Course", icon: BookOpen },
-      { href: "/courses/history", label: "History Course", icon: Archive },
-    ],
+      { href: "/courses/quran", label: "Quran Course", icon: BookOpen, external: false },
+      { href: "/courses/hadees", label: "Hadees Course", icon: BookOpen, external: false },
+      { href: "/courses/seerat", label: "Seerat Course", icon: BookOpen, external: false },
+      { href: "/courses/fiqh", label: "Fiqh Course", icon: BookOpen, external: false },
+      { href: "/courses/history", label: "History Course", icon: Archive, external: false },
+    ]
   },
   {
     label: "Departments",
     icon: Building,
     items: [
-      { href: "/departments/campus", label: "Campus", icon: Building },
-      { href: "/departments/dawat", label: "Dawat", icon: BookOpen },
-      { href: "/departments/khidmat-e-khalq", label: "Khidmat e Khalq", icon: Heart },
-    ],
+      { href: "/departments/campus", label: "Campus", icon: Building, external: false },
+      { href: "/departments/dawat", label: "Dawat", icon: BookOpen, external: false },
+      { href: "/departments/khidmat-e-khalq", label: "Khidmat e Khalq", icon: Heart, external: false },
+    ]
   },
   {
-    label: "AL_HUDA",
+    label: "IYF Islamic Digital Library",
     icon: Book,
     items: [
-      { href: "/learn-islam/books", label: "IYF Islamic Digital Library", icon: BookOpen },
-      { href: "/learn-islam/blogs", label: "Blogs", icon: FileText },
-    ],
-  },
+      { href: "/learn-islam/books", label: "IYF Islamic Digital Library", icon: BookOpen, external: false },
+      { href: "/learn-islam/blogs", label: "Blogs", icon: FileText, external: false },
+    ]
+  }
 ];
 
 const Header: FC = () => {
@@ -76,254 +80,350 @@ const Header: FC = () => {
   const headerRef = useRef<HTMLElement | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
 
   const isActive = (path: string) => pathname === path;
 
   useEffect(() => {
     const updateHeaderHeight = () => {
       if (headerRef.current) {
-        document.documentElement.style.setProperty("--header-height", `${headerRef.current.offsetHeight}px`);
+        document.documentElement.style.setProperty(
+          "--header-height",
+          `${headerRef.current.offsetHeight}px`
+        );
       }
     };
+
     updateHeaderHeight();
     window.addEventListener("resize", updateHeaderHeight);
-    return () => window.removeEventListener("resize", updateHeaderHeight);
+
+    return () => {
+      window.removeEventListener("resize", updateHeaderHeight);
+    };
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? "hidden" : "unset";
+    if (headerRef.current) {
+      document.documentElement.style.setProperty(
+        "--header-height",
+        `${headerRef.current.offsetHeight}px`
+      );
+    }
+  }, [mobileMenuOpen, activeDropdown]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (!target.closest('.dropdown-container')) {
+        setActiveDropdown(null);
+      }
+    };
+
+    if (activeDropdown) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [activeDropdown]);
+
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMobileMenuOpen(false);
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, []);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [mobileMenuOpen]);
 
-  const toggleDropdown = (label: string) => setActiveDropdown((curr) => (curr === label ? null : label));
-  const toggleMobileDropdown = (label: string) => setActiveMobileDropdown((curr) => (curr === label ? null : label));
-  const closeDropdown = () => setActiveDropdown(null);
+  const toggleDropdown = (label: string) => {
+    setActiveDropdown((current) => (current === label ? null : label));
+  };
+
+  const closeDropdown = () => {
+    setActiveDropdown(null);
+  };
+
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
     setActiveDropdown(null);
   };
 
   return (
-    <header ref={headerRef} className="bg-white sticky top-0 z-[9999] shadow">
-      <div className="max-w-[1600px] mx-auto flex items-center justify-between px-6 md:px-10 py-3">
-        {/* Logo */}
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/assets/black-logo.png"
-            alt="IYF Logo"
-            width={230}
-            height={70}
-            className="h-14 w-auto md:h-16"
-            priority
-          />
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center space-x-1.5">
-          <Link
-            href="/"
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-[14px] font-semibold rounded-md transition-all ${
-              isActive("/") ? "text-[#22CA38] bg-green-50" : "text-gray-700 hover:text-[#22CA38] hover:bg-gray-100"
-            }`}
-          >
-            <Home size={17} />
-            <span>Home</span>
+    <header
+      ref={headerRef}
+      className="bg-white sticky top-0 z-[9999] flex justify-center shadow"
+    >
+      <div className="px-5 md:px-10 2xl:px-6 py-5 max-w-[1600px] w-full">
+        <div className="flex items-center justify-between gap-6">
+          <Link href="/" className="flex-shrink-0 mr-4">
+            <Image
+              src="/assets/black-logo.png"
+              alt="IYF Logo"
+              width={220}
+              height={64}
+              className="h-10 w-auto lg:h-12 xl:h-14"
+              priority
+            />
           </Link>
 
-          <Link
-            href="/about-us"
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-[14px] font-semibold rounded-md transition-all ${
-              isActive("/about-us") ? "text-[#22CA38] bg-green-50" : "text-gray-700 hover:text-[#22CA38] hover:bg-gray-100"
-            }`}
-          >
-            <Users size={17} />
-            <span>About Us</span>
-          </Link>
+          <nav className="hidden lg:flex items-center gap-0.5">
+            <Link
+              href="/"
+              className={`flex items-center gap-1 px-2 py-1.5 text-[13px] font-semibold rounded-lg transition-colors whitespace-nowrap ${
+                isActive('/')
+                  ? 'text-[#22CA38] bg-green-50'
+                  : 'text-gray-700 hover:text-[#22CA38] hover:bg-gray-100'
+              }`}
+            >
+              <Home size={17} className="flex-shrink-0" />
+              <span>Home</span>
+            </Link>
 
-          {navigationItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div key={item.label} className="relative">
-                <button
-                  onClick={() => toggleDropdown(item.label)}
-                  onBlur={(e) => {
-                    if (!e.currentTarget.contains(e.relatedTarget as Node)) closeDropdown();
-                  }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 text-[14px] font-semibold rounded-md transition-all ${
-                    activeDropdown === item.label
-                      ? "text-[#22CA38] bg-green-50"
-                      : "text-gray-700 hover:text-[#22CA38] hover:bg-gray-100"
-                  }`}
-                >
-                  <Icon size={17} />
-                  <span>{item.label}</span>
-                  <ChevronDown
-                    size={14}
-                    className={`ml-1 transition-transform duration-300 ${
-                      activeDropdown === item.label ? "rotate-180 text-[#22CA38]" : "text-gray-500"
+            <Link
+              href="/about-us"
+              className={`flex items-center gap-1 px-2 py-1.5 text-[13px] font-semibold rounded-lg transition-colors whitespace-nowrap ${
+                isActive('/about-us')
+                  ? 'text-[#22CA38] bg-green-50'
+                  : 'text-gray-700 hover:text-[#22CA38] hover:bg-gray-100'
+              }`}
+            >
+              <Users size={17} className="flex-shrink-0" />
+              <span>About Us</span>
+            </Link>
+
+            {navigationItems.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <div key={item.label} className="relative dropdown-container">
+                  <button
+                    onClick={() => toggleDropdown(item.label)}
+                    className={`flex items-center gap-1 px-2 py-1.5 text-[13px] font-semibold rounded-lg transition-colors whitespace-nowrap ${
+                      activeDropdown === item.label
+                        ? 'text-[#22CA38] bg-green-50'
+                        : 'text-gray-700 hover:text-[#22CA38] hover:bg-gray-100'
                     }`}
-                  />
-                </button>
+                  >
+                    <IconComponent size={17} className="flex-shrink-0" />
+                    <span>{item.label}</span>
+                    <ChevronDown
+                      size={14}
+                      className={`ml-0.5 transition-transform duration-300 flex-shrink-0 ${
+                        activeDropdown === item.label ? 'rotate-180 text-[#22CA38]' : 'text-gray-500'
+                      }`}
+                    />
+                  </button>
 
-                <AnimatePresence>
                   {activeDropdown === item.label && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute left-0 top-full mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg overflow-hidden z-50"
-                    >
-                      <div className="py-1">
-                        {item.items.map((sub) => {
-                          const SubIcon = sub.icon;
-                          const linkProps = {
-                            className:
-                              "flex items-center px-3 py-2 text-[13px] text-gray-700 font-medium hover:bg-gray-100 hover:text-[#22CA38] transition-colors",
-                            onClick: closeDropdown,
-                          };
-                          const content = (
+                    <div className="absolute top-full left-0 mt-1.5 w-64 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden">
+                      <div className="py-1.5 px-1">
+                        {item.items.map((subItem) => {
+                          const SubIconComponent = subItem.icon;
+                          const linkContent = (
                             <>
-                              <SubIcon size={15} className="mr-2 text-[#22CA38]" />
-                              {sub.label}
+                              <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-gray-100 flex-shrink-0">
+                                <SubIconComponent size={15} className="text-[#22CA38]" />
+                              </div>
+                              <span className="flex-1">{subItem.label}</span>
                             </>
                           );
-                          return sub.external ? (
-                            <a key={sub.href} href={sub.href} target="_blank" rel="noopener noreferrer" {...linkProps}>
-                              {content}
-                            </a>
-                          ) : (
-                            <Link key={sub.href} href={sub.href} {...linkProps}>
-                              {content}
+
+                          if (subItem.external) {
+                            return (
+                              <a
+                                key={subItem.href}
+                                href={subItem.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={closeDropdown}
+                                className="flex items-center gap-2.5 px-2.5 py-2 mx-1 text-[13px] text-gray-700 hover:text-[#22CA38] hover:bg-gray-100 rounded-lg transition-colors font-medium"
+                              >
+                                {linkContent}
+                              </a>
+                            );
+                          }
+
+                          return (
+                            <Link
+                              key={subItem.href}
+                              href={subItem.href}
+                              onClick={closeDropdown}
+                              className="flex items-center gap-2.5 px-2.5 py-2 mx-1 text-[13px] text-gray-700 hover:text-[#22CA38] hover:bg-gray-100 rounded-lg transition-colors font-medium"
+                            >
+                              {linkContent}
                             </Link>
                           );
                         })}
                       </div>
-                    </motion.div>
+                    </div>
                   )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
-        </nav>
+                </div>
+              );
+            })}
 
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 rounded-md text-gray-700 hover:text-[#22CA38] hover:bg-gray-100 transition-all"
-        >
-          {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+          </nav>
+
+          <button
+            onClick={() => setMobileMenuOpen((value) => !value)}
+            className="lg:hidden p-2 rounded-lg text-gray-700 hover:text-[#22CA38] hover:bg-gray-100 transition-colors"
+            aria-label="Toggle navigation menu"
+          >
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
-        {mobileMenuOpen && (
-          <>
+        {mobileMenuOpen && [
+          (
             <motion.div
-              key="overlay"
-              className="fixed inset-0 bg-black/40 z-40"
+              key="mobile-menu-overlay"
+              className="fixed inset-0 bg-black/40 z-40 lg:hidden"
               onClick={closeMobileMenu}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+              style={{ willChange: 'opacity' }}
             />
+          ),
+          (
             <motion.div
-              key="drawer"
-              className="fixed top-0 right-0 h-full w-[85vw] max-w-sm bg-white z-50 shadow-xl flex flex-col overflow-y-auto"
-              initial={{ x: "100%" }}
+              key="mobile-menu-panel"
+              className="fixed top-0 right-0 h-full w-[88vw] max-w-sm bg-white z-50 lg:hidden shadow-xl flex flex-col"
+              initial={{ x: '100%' }}
               animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
+              style={{ willChange: 'transform, opacity' }}
             >
-              <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 bg-gray-50">
-                <Image src="/assets/black-logo.png" alt="IYF Logo" width={160} height={40} className="h-10 w-auto" />
-                <button onClick={closeMobileMenu} className="p-2 rounded-md text-gray-700 hover:text-[#22CA38]">
+              <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200 bg-gray-50">
+                <Image
+                  src="/assets/black-logo.png"
+                  alt="IYF Logo"
+                  width={140}
+                  height={40}
+                  className="h-8 w-auto"
+                />
+                <button
+                  onClick={closeMobileMenu}
+                  className="p-2 rounded-lg text-gray-700 hover:text-[#22CA38] hover:bg-white transition-colors"
+                  aria-label="Close navigation menu"
+                >
                   <X size={20} />
                 </button>
               </div>
 
-              <div className="flex flex-col px-4 py-4 space-y-2">
+              <div className="flex-1 px-4 py-3 space-y-1.5 overflow-y-auto">
                 <Link
                   href="/"
                   onClick={closeMobileMenu}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-[15px] font-semibold ${
-                    isActive("/") ? "text-[#22CA38] bg-green-50" : "text-gray-700 hover:bg-gray-100 hover:text-[#22CA38]"
+                  className={`flex items-center gap-3 px-3 py-3 text-[15px] font-semibold rounded-lg transition-colors ${
+                    isActive('/')
+                      ? 'text-[#22CA38] bg-green-50'
+                      : 'text-gray-700 hover:text-[#22CA38] hover:bg-gray-100'
                   }`}
                 >
-                  <Home size={18} />
-                  Home
+                  <Home size={19} />
+                  <span>Home</span>
                 </Link>
 
                 <Link
                   href="/about-us"
                   onClick={closeMobileMenu}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-[15px] font-semibold ${
-                    isActive("/about-us")
-                      ? "text-[#22CA38] bg-green-50"
-                      : "text-gray-700 hover:bg-gray-100 hover:text-[#22CA38]"
+                  className={`flex items-center gap-3 px-3 py-3 text-[15px] font-semibold rounded-lg transition-colors ${
+                    isActive('/about-us')
+                      ? 'text-[#22CA38] bg-green-50'
+                      : 'text-gray-700 hover:text-[#22CA38] hover:bg-gray-100'
                   }`}
                 >
-                  <Users size={18} />
-                  About Us
+                  <Users size={19} />
+                  <span>About Us</span>
                 </Link>
 
                 {navigationItems.map((item) => {
-                  const Icon = item.icon;
+                  const IconComponent = item.icon;
+                  const isOpen = activeDropdown === item.label;
                   return (
-                    <div key={item.label} className="flex flex-col">
+                    <div key={item.label} className="space-y-1">
                       <button
-                        onClick={() => toggleMobileDropdown(item.label)}
-                        className={`flex items-center justify-between w-full px-3 py-2 rounded-md text-[15px] font-semibold ${
-                          activeMobileDropdown === item.label
-                            ? "text-[#22CA38] bg-green-50"
-                            : "text-gray-700 hover:bg-gray-100 hover:text-[#22CA38]"
+                        onClick={() => toggleDropdown(item.label)}
+                        className={`flex items-center justify-between w-full px-3 py-3 text-[15px] font-semibold rounded-lg transition-colors ${
+                          isOpen
+                            ? 'text-[#22CA38] bg-green-50'
+                            : 'text-gray-700 hover:text-[#22CA38] hover:bg-gray-100'
                         }`}
                       >
-                        <div className="flex items-center gap-2">
-                          <Icon size={18} />
-                          {item.label}
+                        <div className="flex items-center gap-3">
+                          <IconComponent size={19} />
+                          <span>{item.label}</span>
                         </div>
                         <ChevronDown
                           size={16}
                           className={`transition-transform duration-300 ${
-                            activeMobileDropdown === item.label ? "rotate-180 text-[#22CA38]" : "text-gray-500"
+                            isOpen ? 'rotate-180 text-[#22CA38]' : 'text-gray-500'
                           }`}
                         />
                       </button>
 
-                      <AnimatePresence>
-                        {activeMobileDropdown === item.label && (
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
                           <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.25 }}
-                            className="ml-7 mt-1 border-l border-gray-200"
+                            key={`${item.label}-submenu`}
+                            className="ml-5 pl-3 border-l border-green-100 space-y-1 mt-1 origin-top"
+                            initial={{ scaleY: 0, opacity: 0 }}
+                            animate={{ scaleY: 1, opacity: 1 }}
+                            exit={{ scaleY: 0, opacity: 0 }}
+                            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                            style={{ transformOrigin: 'top', willChange: 'transform, opacity' }}
                           >
-                            {item.items.map((sub) => {
-                              const SubIcon = sub.icon;
-                              return sub.external ? (
-                                <a
-                                  key={sub.href}
-                                  href={sub.href}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  onClick={closeMobileMenu}
-                                  className="flex items-center gap-2 px-3 py-2 text-[14px] text-gray-700 hover:text-[#22CA38] transition-all"
-                                >
-                                  <SubIcon size={15} className="text-[#22CA38]" />
-                                  {sub.label}
-                                </a>
-                              ) : (
+                            {item.items.map((subItem) => {
+                              const SubIconComponent = subItem.icon;
+                              const linkContent = (
+                                <>
+                                  <SubIconComponent size={15} className="text-[#22CA38]" />
+                                  <span>{subItem.label}</span>
+                                </>
+                              );
+
+                              if (subItem.external) {
+                                return (
+                                  <a
+                                    key={subItem.href}
+                                    href={subItem.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={closeMobileMenu}
+                                    className="flex items-center gap-2.5 px-2.5 py-2.5 text-[14px] text-gray-600 hover:text-[#22CA38] hover:bg-gray-100 rounded-lg transition-colors font-medium"
+                                  >
+                                    {linkContent}
+                                  </a>
+                                );
+                              }
+
+                              return (
                                 <Link
-                                  key={sub.href}
-                                  href={sub.href}
+                                  key={subItem.href}
+                                  href={subItem.href}
                                   onClick={closeMobileMenu}
-                                  className="flex items-center gap-2 px-3 py-2 text-[14px] text-gray-700 hover:text-[#22CA38] transition-all"
+                                  className="flex items-center gap-2.5 px-2.5 py-2.5 text-[14px] text-gray-600 hover:text-[#22CA38] hover:bg-gray-100 rounded-lg transition-colors font-medium"
                                 >
-                                  <SubIcon size={15} className="text-[#22CA38]" />
-                                  {sub.label}
+                                  {linkContent}
                                 </Link>
                               );
                             })}
@@ -333,10 +433,11 @@ const Header: FC = () => {
                     </div>
                   );
                 })}
+
               </div>
             </motion.div>
-          </>
-        )}
+          ),
+        ]}
       </AnimatePresence>
     </header>
   );
