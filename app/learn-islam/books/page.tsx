@@ -11,6 +11,12 @@ import {
   MessageCircle,
 } from "lucide-react"; // Icon library for UI elements
 import type { Metadata } from "next";
+import { BooksData } from "@/types/books";
+import { GET_BOOKS } from "@/services/queries/books";
+import client from "@/lib/apollo-client";
+import BookCard from "@/components/books/book-card";
+
+export const revalidate = 60; 
 
 // SEO metadata for Al-Huda Library page
 export const metadata: Metadata = {
@@ -122,7 +128,10 @@ const highlights = [
 ];
 
 // Main component for the Islamic Books page
-const IslamicBooksPage: FC = () => {
+const IslamicBooksPage: FC = async () => {
+  const { data } = await client.query<BooksData>({ query: GET_BOOKS ,fetchPolicy: "no-cache", });
+  const books = data?.books?.nodes ?? [];
+
   // Structured data for Al-Huda Library page
   const booksPageSchema = {
     '@context': 'https://schema.org',
@@ -144,7 +153,7 @@ const IslamicBooksPage: FC = () => {
       })),
     },
   };
-
+  
   return (
     // Main container with max-width, centered, and responsive padding
     <main className="max-w-[1600px] w-full mx-auto px-5 md:px-10 2xl:px-20 pb-20">
@@ -153,13 +162,13 @@ const IslamicBooksPage: FC = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(booksPageSchema) }}
       />
-      
-      
+
+
       {/* Hero Section - Gradient banner with page introduction */}
       <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#22CA38] via-emerald-500 to-[#0F5127] text-white px-6 py-14 sm:px-10 lg:px-20">
         {/* Decorative blur effect visible only on large screens */}
         <div className="absolute inset-y-0 right-[-80px] hidden lg:block w-[340px] rounded-full bg-white/10 blur-3xl" />
-        
+
         {/* Content wrapper with z-10 to appear above decorative elements */}
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           {/* Left: text content */}
@@ -204,7 +213,7 @@ const IslamicBooksPage: FC = () => {
       </section>
 
       {/* Features/Highlights Section - 3 column grid showcasing key benefits */}
-  <section className="mt-12 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-2" aria-label="Learning highlights">
+      <section className="mt-12 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-2" aria-label="Learning highlights">
         {/* Map through highlights array to create feature cards */}
         {highlights.map(({ title, description, icon: Icon }) => (
           <div
@@ -238,13 +247,13 @@ const IslamicBooksPage: FC = () => {
               Ideal for study circles and self-paced learning, these titles help you build a disciplined reading habit. Each download includes discussion prompts to help you internalise key lessons.
             </p>
           </div>
-          
+
           {/* WhatsApp button - opens WhatsApp chat with pre-filled message */}
           <a
             href="https://wa.me/918800905047?text=Hi%2C%20I%20would%20like%20to%20request%20the%20full%20syllabus%20plan%20for%20Islamic%20books"
             target="_blank" // Opens in new tab
             rel="noopener noreferrer" // Security best practice for external links
-            className="inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#20BA5A] shadow-lg shadow-[#25D366]/25"
+            className="inline-flex text-nowrap justify-center items-center gap-2 rounded-xl bg-[#25D366] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#20BA5A] shadow-lg shadow-[#25D366]/25"
           >
             <MessageCircle size={16} />
             Request on WhatsApp
@@ -254,50 +263,55 @@ const IslamicBooksPage: FC = () => {
         {/* Books grid - responsive: 1 col mobile, 2 cols tablet, 3 cols desktop */}
         <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {/* Map through syllabusBooks array to create book cards */}
-          {syllabusBooks.map(({ title, description, image, link, level, format }) => (
-            <article
-              key={title}
-              // group class enables hover effects on child elements
-              className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_24px_60px_-45px_rgba(15,23,42,0.35)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_65px_-40px_rgba(34,202,56,0.45)]"
-            >
-              {/* Book cover image container */}
-              <div className="relative h-48 w-full overflow-hidden bg-gray-50">
-                {/* Next.js Image component with optimized loading */}
-                <Image
-                  src={image}
-                  alt={title}
-                  fill // Makes image fill the parent container
-                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" // Responsive image sizes
-                  // object-contain ensures full image is visible without cropping
-                  // group-hover:scale-105 creates zoom effect on card hover
-                  className="object-contain transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              
-              {/* Book details container */}
-              <div className="flex flex-1 flex-col gap-4 p-6">
-                {/* Level and format badges */}
-                <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-[#22CA38]">
-                  <span>{level}</span>
-                  <span className="text-gray-400">{format}</span>
-                </div>
-                
-                <h3 className="text-lg font-semibold text-[#1B2B34] leading-tight">{title}</h3>
-                
-                {/* flex-1 makes description take available space, pushing buttons to bottom */}
-                <p className="text-sm text-gray-600 leading-relaxed flex-1">{description}</p>
-                
-                {/* Download button - downloads PDF to user's device */}
-                <a
-                  href={link}
-                  download={`${title}.pdf`} // Sets the downloaded filename
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#22CA38] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#22CA38]/25 transition hover:bg-[#1db832] w-full"
-                >
-                  <Download size={18} />
-                  Download PDF
-                </a>
-              </div>
-            </article>
+          {books.map(({ books }, index) => (
+            // <article
+            //   key={books.title}
+            //   // group class enables hover effects on child elements
+            //   className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_24px_60px_-45px_rgba(15,23,42,0.35)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_65px_-40px_rgba(34,202,56,0.45)]"
+            // >
+            //   {/* Book cover image container */}
+            //   <div className="relative h-48 w-full overflow-hidden bg-gray-50">
+            //     {/* Next.js Image component with optimized loading */}
+            //     <Image
+            //       src={books?.image?.node?.link ?? ""}
+            //       alt={books?.image?.node?.link ?? `book-image-${index}`}
+            //       fill // Makes image fill the parent container
+            //       sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" // Responsive image sizes
+            //       // object-contain ensures full image is visible without cropping
+            //       // group-hover:scale-105 creates zoom effect on card hover
+            //       className="object-contain transition-transform duration-700 group-hover:scale-105"
+            //     />
+            //   </div>
+
+            //   {/* Book details container */}
+            //   <div className="flex flex-1 flex-col gap-4 p-6">
+            //     {/* Level and format badges */}
+            //     <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-[#22CA38]">
+            //       <span>{books?.level}</span>
+            //       <span className="text-gray-400">{books?.format}</span>
+            //     </div>
+
+            //     <h3 className="text-lg font-semibold text-[#1B2B34] leading-tight">
+            //       {books?.title}
+            //     </h3>
+
+            //     {/* flex-1 makes description take available space, pushing buttons to bottom */}
+            //     <p className="text-sm text-gray-600 leading-relaxed flex-1">
+            //       {books?.description}
+            //     </p>
+
+            //     {/* Download button - downloads PDF to user's device */}
+            //     <button
+            //       onClick={() => handleDownload(books.title, books?.url ?? "")}
+            //       className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#22CA38] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#22CA38]/25 transition hover:bg-[#1db832] w-full"
+            //     >
+            //       <Download size={18} />
+            //       Download PDF
+            //     </button>
+            //   </div>
+            // </article>
+
+            <BookCard books={books} index={index} key={index} />
           ))}
         </div>
       </section>
@@ -306,7 +320,6 @@ const IslamicBooksPage: FC = () => {
       <section id="audio-collection" className="mt-16 lg:mt-24">
         {/* Container with gradient background for visual distinction */}
         <div className="rounded-3xl border border-gray-100 bg-gradient-to-br from-white via-[#F4FFF7] to-white p-6 sm:p-10">
-          
           {/* Section header */}
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
@@ -320,13 +333,13 @@ const IslamicBooksPage: FC = () => {
                 Prefer podcasts or learn during commutes? Queue these curated playlists and lecture series to complement your reading list.
               </p>
             </div>
-            
+
             {/* WhatsApp CTA for audio requests */}
             <a
               href="https://wa.me/918800905047?text=Hi%2C%20I%20would%20like%20to%20request%20a%20curated%20audio%20set%20for%20Islamic%20learning"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#25D366]/25 transition hover:bg-[#20BA5A]"
+              className="inline-flex justify-center text-nowrap items-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#25D366]/25 transition hover:bg-[#20BA5A]"
             >
               <MessageCircle size={18} />
               Request on WhatsApp
@@ -337,57 +350,57 @@ const IslamicBooksPage: FC = () => {
           <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {/* Map through audioSeries array to create audio cards */}
             {audioSeries.map(({ title, speaker, duration, description, image, link }) => (
-              <article
-                key={title}
-                className="group flex flex-col gap-5 rounded-2xl border border-transparent bg-white/80 p-6 shadow-[0_24px_55px_-45px_rgba(15,23,42,0.65)] transition-all duration-300 hover:-translate-y-1 hover:border-[#22CA38]/40 hover:shadow-[0_28px_70px_-40px_rgba(34,202,56,0.45)]"
-              >
-                {/* Header with audio cover and title */}
-                <div className="flex items-center gap-4">
-                  {/* Small square audio cover */}
-                  <div className="relative h-16 w-16 overflow-hidden rounded-xl bg-[#22CA38]/10">
-                    <Image
-                      src={image}
-                      alt={title}
-                      fill
-                      sizes="64px" // Fixed size for audio thumbnails
-                      className="object-cover"
-                    />
-                  </div>
-                  
-                  {/* Title and speaker info */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-[#1B2B34]">{title}</h3>
-                    <p className="text-sm text-gray-500">{speaker}</p>
-                  </div>
-                </div>
-                
-                {/* Description with flex-1 to push metadata and button to bottom */}
-                <p className="text-sm text-gray-600 leading-relaxed flex-1">{description}</p>
-                
-                {/* Metadata row - duration and quality indicator */}
-                <div className="flex items-center justify-between text-xs font-medium text-gray-500">
-                  <span className="inline-flex items-center gap-2">
-                    <Clock size={14} />
-                    {duration}
-                  </span>
-                  <span className="inline-flex items-center gap-2 text-[#22CA38]">
-                    <Headphones size={14} />
-                    High-quality audio
-                  </span>
-                </div>
-                
-                {/* Listen button - opens audio link in new tab */}
-                <Link
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#22CA38] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#22CA38]/25 transition hover:bg-[#1db832]"
+                <article
+                  key={title}
+                  className="group flex flex-col gap-5 rounded-2xl border border-transparent bg-white/80 p-6 shadow-[0_24px_55px_-45px_rgba(15,23,42,0.65)] transition-all duration-300 hover:-translate-y-1 hover:border-[#22CA38]/40 hover:shadow-[0_28px_70px_-40px_rgba(34,202,56,0.45)]"
                 >
-                  <Headphones size={18} />
-                  Listen Audio
-                </Link>
-              </article>
-            ))}
+                  {/* Header with audio cover and title */}
+                  <div className="flex items-center gap-4">
+                    {/* Small square audio cover */}
+                    <div className="relative h-16 w-16 overflow-hidden rounded-xl bg-[#22CA38]/10">
+                      <Image
+                        src={image}
+                        alt={title}
+                        fill
+                        sizes="64px" // Fixed size for audio thumbnails
+                        className="object-cover"
+                      />
+                    </div>
+
+                    {/* Title and speaker info */}
+                    <div>
+                      <h3 className="text-lg font-semibold text-[#1B2B34]">{title}</h3>
+                      <p className="text-sm text-gray-500">{speaker}</p>
+                    </div>
+                  </div>
+
+                  {/* Description with flex-1 to push metadata and button to bottom */}
+                  <p className="text-sm text-gray-600 leading-relaxed flex-1">{description}</p>
+
+                  {/* Metadata row - duration and quality indicator */}
+                  <div className="flex items-center justify-between text-xs font-medium text-gray-500">
+                    <span className="inline-flex items-center gap-2">
+                      <Clock size={14} />
+                      {duration}
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-[#22CA38]">
+                      <Headphones size={14} />
+                      High-quality audio
+                    </span>
+                  </div>
+
+                  {/* Listen button - opens audio link in new tab */}
+                  <Link
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#22CA38] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#22CA38]/25 transition hover:bg-[#1db832]"
+                  >
+                    <Headphones size={18} />
+                    Listen Audio
+                  </Link>
+                </article>
+              ))}
           </div>
         </div>
       </section>
