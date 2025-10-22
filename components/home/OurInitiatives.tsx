@@ -30,11 +30,11 @@ const initiatives = [
     description: "Quarterly Bengali Magazine for Children",
     href: "https://bengali.iyfindia.org/noor/",
   },
-  {
-    logo: "/assets/Karwan-e-Uqab%20Logo.png",
-    description: "IYF Children Wing",
-    href: "#",
-  },
+  // {
+  //   logo: "/assets/Karwan-e-Uqab%20Logo.png",
+  //   description: "IYF Children Wing",
+  //   href: "#",
+  // },
   {
     logo: "/assets/Najmus%20Saqib%20Logo.png",
     description: "Monthly Urdu Wall Magazine for Children.",
