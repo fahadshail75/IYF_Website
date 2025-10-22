@@ -1,88 +1,64 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ReactTyped } from "react-typed";
-import { useMediaQuery } from "react-responsive";
 import Image from "next/image";
 
 export default function HeroSection() {
-  const [isTypingStarted, setIsTypingStarted] = useState(false);
-  const [isTypedDone, setIsTypedDone] = useState(false);
-
-  // Detect large screens
-  const isDesktop = useMediaQuery({ minWidth: 1024 });
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    if (isTypingStarted) {
-      console.log("Typing started, image animation triggered!");
-    }
-  }, [isTypingStarted]);
+    const timeout = setTimeout(() => setIsMounted(true), 100);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
-    <section className="relative max-w-[1600px] mx-auto px-6 lg:px-10 py-20  xl:pb-[128px] overflow-hidden">
-      <div className="relative flex flex-col lg:flex-row items-center lg:items-center">
-        {/* Text */}
-        <div className="relative z-10 flex-1 sm:text-center lg:text-left bg-gradient-to-r from-white via-white/80 to-transparent sm:p-6 lg:p-0">
-          <h1 className="italic font-bold text-[#2F4858] text-3xl sm:text-4xl xl:text-5xl 2xl:text-[56px] mb-6 leading-tight tracking-[5px]">
-            <div className="hidden sm:block">
-              <ReactTyped
-                strings={[
-                  `They were<br/><span class="text-[#22CA38] font-black text-5xl sm:text-6xl xl:text-[90px] 2xl:text-[104px]">YOUTHS</span><br/>who believed in their<br/>lord, and we increased them in guidance.`,
-                ]}
-                typeSpeed={40}
-                showCursor={false}
-                loop={false}
-                startDelay={300}
-                onBegin={() => setIsTypingStarted(true)}
-                onComplete={() => setIsTypedDone(true)}
-              />
-            </div>
-
-            <div className=" sm:hidden">
-              <ReactTyped
-                strings={[
-                  `They were <span class="text-[#22CA38] font-black text-5xl sm:text-6xl xl:text-[90px] 2xl:text-[104px]">YOUTHS</span> who believed in their<br/>lord, and we increased them in guidance.`,
-                ]}
-                typeSpeed={40}
-                showCursor={false}
-                loop={false}
-                startDelay={300}
-                onBegin={() => setIsTypingStarted(true)}
-                onComplete={() => setIsTypedDone(true)}
-              />
-            </div>
+    <section className="relative w-full overflow-hidden py-0 bg-white">
+      <motion.div
+        className="relative w-full max-w-[1600px] mx-auto px-6 lg:px-10 pb-12 flex items-center justify-between flex-col lg:flex-row"
+        initial={{ opacity: 0 }}
+        animate={isMounted ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+      >
+        {/* TEXT SECTION */}
+        <motion.div
+          className="z-20 flex-1 text-center lg:text-left sm:px-4"
+          initial={{ opacity: 0, y: 25 }}
+          animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          <h1 className="italic font-bold text-black text-xl sm:text-3xl xl:text-4xl 2xl:text-5xl leading-tight tracking-[4px]">
+            <span className="block text-black">They were</span>
+            <span className="block text-[#22CA38] font-black text-4xl sm:text-5xl xl:text-[72px] 2xl:text-[88px]">
+              YOUTHS
+            </span>
+            <span className="block text-black">
+              who believed in their <br />
+              Lord, and We increased them in guidance.
+            </span>
           </h1>
 
-          {isTypedDone && (
-            <motion.p
-              className="text-lg sm:text-xl xl:text-2xl italic font-semibold text-[#2F4858] mt-4"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              Join the movement of dedicated youth working to uphold their deen.
-            </motion.p>
-          )}
-        </div>
+          <motion.p
+            className="mt-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#22CA38]"
+            initial={{ opacity: 0 }}
+            animate={isMounted ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.6, duration: 0.8, ease: "easeInOut" }}
+          >
+            Surah Al-Kahf (18:13)
+          </motion.p>
 
-        {/* Image */}
-        <motion.div
-          className="flex-1 lg:-ml-20 relative z-0"
-          initial={
-            isDesktop
-              ? { x: 200, opacity: 0 } // Desktop → from left
-              : { y: 200, opacity: 0 } // Mobile → from bottom
-          }
-          animate={
-            isTypingStarted
-              ? { x: 0, y: 0, opacity: 1 }
-              : isDesktop
-              ? { x: 200, opacity: 0 }
-              : { y: 200, opacity: 0 }
-          }
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
+          <motion.p
+            className="text-lg sm:text-xl xl:text-2xl italic font-semibold text-black mt-4"
+            initial={{ opacity: 0 }}
+            animate={isMounted ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 1.0, duration: 0.9, ease: "easeInOut" }}
+          >
+            Join the movement of dedicated youth working to uphold their deen.
+          </motion.p>
+        </motion.div>
+
+        {/* IMAGE SECTION (static - animation removed) */}
+        <div className="flex-1 relative z-10 mt-8 lg:mt-0">
           <div className="hidden lg:block">
             <Image
               width={1016}
@@ -90,20 +66,22 @@ export default function HeroSection() {
               src="/assets/home/banner-home-image.png"
               alt="banner-image"
               className="w-full h-auto max-w-[950px] mx-auto lg:mx-0"
+              priority
             />
           </div>
 
-          <div className="mt-10 lg:hidden">
+          <div className="lg:hidden">
             <Image
               width={1016}
               height={716}
               src="/assets/home/mb-home-banner-image.png"
               alt="banner-image"
-              className="w-full h-auto max-w-[950px] mx-auto lg:mx-0"
+              className="w-full h-auto max-w-[950px] mx-auto"
+              priority
             />
           </div>
-        </motion.div>
-      </div>
+  </div>
+      </motion.div>
     </section>
   );
 }

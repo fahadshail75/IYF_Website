@@ -40,19 +40,9 @@ const EventosSection: FC<EventosSectionProps> = ({ eventos }) => {
                 className="w-full object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-105"
               />
             </div>
-            <div className="mt-5 flex flex-col  justify-between">
-              <div>
-                <h3 className="text-lg font-semibold mb-2">{evento.title}</h3>
-                <p className="text-sm text-gray-700 mb-4">
-                  {evento.description}
-                </p>
-              </div>
-              <a
-                href={evento.link}
-                className="text-sm text-green-600 font-semibold hover:underline"
-              >
-                Learn More
-              </a>
+            <div className="pt-5">
+              <h3 className="text-lg font-semibold mb-2">{evento.title}</h3>
+              <p className="text-sm text-gray-700">{evento.description}</p>
             </div>
           </div>
         ))}
