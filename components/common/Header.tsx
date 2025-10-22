@@ -66,7 +66,7 @@ const navigationItems = [
     ]
   },
   {
-    label: "IYF Islamic Digital Library",
+    label: "AL_HUDA",
     icon: Book,
     items: [
       { href: "/learn-islam/books", label: "IYF Islamic Digital Library", icon: BookOpen, external: false },
@@ -175,9 +175,9 @@ const Header: FC = () => {
             <Image
               src="/assets/black-logo.png"
               alt="IYF Logo"
-              width={220}
-              height={64}
-              className="h-10 w-auto lg:h-12 xl:h-14"
+              width={260}
+              height={86}
+              className="h-12 w-auto lg:h-14 xl:h-16"
               priority
             />
           </Link>
@@ -316,9 +316,9 @@ const Header: FC = () => {
                 <Image
                   src="/assets/black-logo.png"
                   alt="IYF Logo"
-                  width={140}
-                  height={40}
-                  className="h-8 w-auto"
+                  width={160}
+                  height={48}
+                  className="h-10 w-auto"
                 />
                 <button
                   onClick={closeMobileMenu}
