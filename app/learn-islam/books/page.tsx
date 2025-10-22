@@ -5,7 +5,6 @@ import Link from "next/link"; // Next.js link component for client-side navigati
 import {
   ArrowRight,
   BookOpen,
-  Download,
   Headphones,
   Clock,
   MessageCircle,
