@@ -113,7 +113,7 @@ export default function Home() {
               IYF is a <span className="text-[#22CA38]">national</span> level
               organization, working across India. It aims to guide students and{" "}
               <span className="text-[#22CA38]">youth</span> in the light of
-              Qur'an and Sunnah.
+              Qur&apos;an and Sunnah.
             </h1>
 
             <button className="primary-button">Know more about us</button>
