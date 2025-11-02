@@ -110,10 +110,10 @@ export default function Home() {
 
           <div className="md:w-1/2">
             <h1 className="font-bold text-3xl md:text-[40px]/[72px] text-white">
-              IYF is an <span className="text-[#22CA38]">national</span> level
+              IYF is a <span className="text-[#22CA38]">national</span> level
               organization, working across India. It aims to guide students and{" "}
-              <span className="text-[#22CA38]">youths</span> in the light of
-              Quran and Sunnah.
+              <span className="text-[#22CA38]">youth</span> in the light of
+              Qur'an and Sunnah.
             </h1>
 
             <button className="primary-button">Know more about us</button>
