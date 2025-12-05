@@ -2,8 +2,9 @@
 
 import { FC, useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 // Configuration for banners
 const BANNERS = [
@@ -126,6 +127,18 @@ const BannerPopup: FC = () => {
                                         </div>
                                     </>
                                 )}
+                            </div>
+
+                            {/* Order Now Button */}
+                            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30">
+                                <Link
+                                    href={`https://wa.me/918800905047?text=${encodeURIComponent("Hare Krishna! I would like to order the calendar.")}`}
+                                    target="_blank"
+                                    className="flex items-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-3 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105"
+                                >
+                                    <MessageCircle size={20} />
+                                    <span>Order Now</span>
+                                </Link>
                             </div>
                         </motion.div>
                     </motion.div>
