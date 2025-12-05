@@ -1,146 +1,109 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
-// no React hooks required for the CSS marquee
-import { Sparkles } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 
 const initiatives = [
   {
     logo: "/assets/home/Alhuda.svg",
-    description: "Digital Islamic Library",
+    title: "Digital Library",
+    description: "Access thousands of Islamic books and resources online.",
     href: "/learn-islam/books",
+    color: "bg-emerald-50",
+    hover: "hover:border-emerald-200"
   },
   {
     logo: "/assets/home/milestone.svg",
-    description: "Monthly English Magazine",
+    title: "The Milestone",
+    description: "Monthly English magazine for the contemporary youth.",
     href: "https://themilestone.iyfindia.org/",
+    color: "bg-blue-50",
+    hover: "hover:border-blue-200"
   },
   {
     logo: "/assets/home/naqusheRaah.svg",
-    description: "Monthly Urdu Magazine",
+    title: "Nuqoosh-e-Raah",
+    description: "Monthly Urdu magazine focusing on spiritual growth.",
     href: "#",
+    color: "bg-amber-50",
+    hover: "hover:border-amber-200"
   },
   {
     logo: "/assets/home/SatyaBak.svg",
-    description: "Monthly Bengali Magazine",
+    title: "Satyabaak",
+    description: "Bengali monthly magazine for intellectual awakening.",
     href: "https://bengali.iyfindia.org/satyabaak/",
+    color: "bg-rose-50",
+    hover: "hover:border-rose-200"
   },
   {
     logo: "/assets/NoorLogo.png",
-    description: "Quarterly Bengali Magazine for Children",
+    title: "Noor",
+    description: "Quarterly Bengali magazine nurturing young minds.",
     href: "https://bengali.iyfindia.org/noor/",
-  },
-  {
-    logo: "/assets/Karwan-e-Uqab%20Logo.png",
-    description: "IYF Children Wing",
-    href: "#",
+    color: "bg-purple-50",
+    hover: "hover:border-purple-200"
   },
   {
     logo: "/assets/Najmus%20Saqib%20Logo.png",
-    description: "Monthly Urdu Wall Magazine for Children.",
+    title: "Najmus Saqib",
+    description: "Monthly Urdu wall magazine for children.",
     href: "#",
+    color: "bg-cyan-50",
+    hover: "hover:border-cyan-200"
   },
 ];
 
 export default function OurInitiatives() {
-  // Duplicate items to make an infinite loop effect
-  const repeatedInitiatives = [...initiatives, ...initiatives];
-
-  // CSS marquee duration: scale with item count for readable speed
-  const duration = Math.max(18, initiatives.length * 6); // seconds
-  const hideFromIndex = initiatives.length + 1; // used in mobile CSS to hide duplicates
-
   return (
-    <section className="relative w-full bg-gradient-to-br from-[#f6fff8] via-white to-[#f0fdf4] py-12 md:py-20 2xl:py-28 border-t border-gray-100 mt-10 md:mt-20 overflow-x-hidden">
-      {/* Background Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#22CA38]/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#22CA38]/5 rounded-full blur-3xl"></div>
-      </div>
-
-      {/* Background Image */}
-      <Image
-        src="/assets/home/Our Initiatives.jpg"
-        alt="Our Initiatives Background"
-        fill
-        className="object-cover object-center opacity-10 z-0"
-        priority
-      />
-
-      <div className="max-w-6xl mx-auto px-4 md:px-8 text-center flex flex-col items-center relative z-10">
-        {/* Heading styled like AL_HUDA label on homepage */}
-        <h2 className="font-extrabold text-white bg-black py-1 px-3 text-2xl sm:text-3xl md:text-4xl mb-3 tracking-wide flex items-center justify-center gap-2 w-fit mx-auto">
-          {/* New icon: Sparkles */}
-          <Sparkles size={22} className="text-[#22CA38]" />
-          Our Initiatives
-        </h2>
-
-        {/* Heading */}
-        <h2 className="font-extrabold text-3xl sm:text-4xl md:text-5xl text-[#1B2B34] mb-3 leading-tight">
-          Empowering Through <span className="text-[#22CA38]">Multiple Platforms</span>
-        </h2>
-
-        {/* Subheading */}
-        <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mb-12 leading-relaxed">
-          IYF reaches youth across India through diverse initiatives including magazines in multiple languages, library, and educational programs designed to inspire and guide.
-        </p>
-
-        {/* Sliding Logos (CSS marquee for smooth GPU-accelerated motion) */}
-        <div className="w-full">
-          <style>{`
-            /* Keep horizontal clipping but allow vertical overflow so hover pop isn't cut */
-            .marquee { overflow-x: hidden; overflow-y: visible; padding: 0.75rem 0; }
-            .marquee__track { display: flex; gap: 1.5rem; align-items: center; will-change: transform; }
-            .marquee__track { animation: marquee ${duration}s linear infinite; }
-            .marquee:hover .marquee__track { animation-play-state: paused; }
-
-            /* Mobile: disable animation, wrap items and show compact cards */
-            @media (max-width: 767px) {
-              .marquee__track { animation: none; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
-              .marquee__track > * { flex: 0 0 100%; max-width: 360px; }
-              /* hide duplicated items (we duplicated for the desktop marquee) */
-              .marquee__track > *:nth-child(n+${hideFromIndex}) { display: none; }
-              /* reduce card padding and image height for mobile */
-              .marquee__track > * .p-6 { padding: 1rem; }
-              .marquee__track > * .h-24 { height: 4.5rem; }
-            }
-
-            @keyframes marquee {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-          `}</style>
-
-          <div className="marquee">
-            <div className="marquee__track">
-              {repeatedInitiatives.map((initiative, idx) => (
-                <Link
-                  key={idx}
-                  href={initiative.href}
-                  target={initiative.href.startsWith("http") ? "_blank" : undefined}
-                  rel={initiative.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="group flex-shrink-0 w-full sm:w-64 md:w-72 bg-white rounded-2xl p-6 md:p-8 shadow-md hover:shadow-2xl transition-transform duration-300 hover:scale-105 hover:z-30 border border-gray-100 hover:border-[#22CA38]/30 cursor-pointer"
-                >
-                  <div className="relative z-10 flex flex-col items-center h-full">
-                    <div className="w-full h-24 md:h-28 flex items-center justify-center mb-4 bg-gray-50 group-hover:bg-[#22CA38]/5 rounded-xl transition-colors duration-350">
-                      <Image
-                        src={initiative.logo}
-                        alt={initiative.description}
-                        width={140}
-                        height={80}
-                        className="object-contain h-auto w-auto max-h-20 md:max-h-24"
-                      />
-                    </div>
-                    
-                    <p className="text-gray-500 text-xs md:text-sm text-center leading-relaxed">
-                      {initiative.description}
-                    </p>
-                    <div className="mt-4 w-12 h-1 bg-gradient-to-r from-[#22CA38] to-[#10B981] rounded-full group-hover:w-16 transition-all duration-300"></div>
-                  </div>
-                </Link>
-              ))}
+    <section className="relative w-full py-16 lg:py-24 bg-white overflow-hidden">
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-8 h-[2px] bg-[#22CA38]"></span>
+              <span className="text-[#22CA38] font-bold tracking-widest uppercase text-sm">Our Ecosystem</span>
             </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-black">Initiatives & Platforms</h2>
           </div>
+
+          <p className="text-gray-500 max-w-md text-lg">
+            Diverse platforms designed to educate, inspire, and empower the youth across different languages and mediums.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {initiatives.map((item, idx) => (
+            <Link
+              key={idx}
+              href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              className={`group relative p-8 rounded-3xl border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${item.color} ${item.hover}`}
+            >
+              <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <ArrowUpRight className="w-5 h-5 text-gray-400" />
+              </div>
+
+              <div className="h-20 mb-6 flex items-center justify-start">
+                <Image
+                  src={item.logo}
+                  alt={item.title}
+                  width={120}
+                  height={60}
+                  className="object-contain h-full w-auto"
+                />
+              </div>
+
+              <h3 className="text-xl font-bold text-black mb-2 group-hover:text-[#22CA38] transition-colors">
+                {item.title}
+              </h3>
+
+              <p className="text-gray-500 text-sm leading-relaxed">
+                {item.description}
+              </p>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

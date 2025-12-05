@@ -65,7 +65,7 @@ export default function HeroSection() {
               height={716}
               src="/assets/home/banner-home-image.png"
               alt="banner-image"
-              className="w-full h-auto max-w-[950px] mx-auto lg:mx-0"
+              className="w-full h-auto max-w-[950px] mx-auto lg:mx-0 rounded-3xl"
               priority
             />
           </div>
@@ -76,11 +76,11 @@ export default function HeroSection() {
               height={716}
               src="/assets/home/mb-home-banner-image.png"
               alt="banner-image"
-              className="w-full h-auto max-w-[950px] mx-auto"
+              className="w-full h-auto max-w-[950px] mx-auto rounded-3xl"
               priority
             />
           </div>
-  </div>
+        </div>
       </motion.div>
     </section>
   );
