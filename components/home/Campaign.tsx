@@ -20,13 +20,13 @@ interface CampaignsSectionProps {
 const CampaignsSection: FC<CampaignsSectionProps> = ({ campaigns }) => {
   return (
     <section className="w-full">
-      <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12 gap-4 md:gap-6">
         <div>
           <div className="flex items-center gap-2 mb-3">
             <span className="w-8 h-[2px] bg-[#22CA38]"></span>
             <span className="text-[#22CA38] font-bold tracking-widest uppercase text-sm">Major Events</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-black">State Conferences</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-black mt-2">State Conferences</h2>
         </div>
       </div>
 
@@ -55,7 +55,7 @@ const CampaignsSection: FC<CampaignsSectionProps> = ({ campaigns }) => {
             </div>
 
             {/* Content */}
-            <div className="p-8 flex-1 flex flex-col">
+            <div className="p-6 md:p-8 flex-1 flex flex-col">
               <h3 className="text-2xl font-bold text-black mb-4 group-hover:text-[#22CA38] transition-colors">
                 {campaign.title}
               </h3>

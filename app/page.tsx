@@ -91,8 +91,8 @@ export default function Home() {
 
       {/* balck section */}
 
-      <section className="bg-[#000] w-full    ">
-        <div className="max-w-[1600px] w-full px-5 md:px-10 2xl:px-6 py-10 md:py-20 mx-auto  flex flex-col md:flex-row gap-10 lg:gap-20 2xl:gap-[104px] items-center justify-center">
+      <section className="bg-[#000] w-full">
+        <div className="max-w-[1600px] w-full px-5 md:px-10 2xl:px-6 py-12 md:py-20 mx-auto flex flex-col md:flex-row gap-8 lg:gap-20 2xl:gap-[104px] items-center justify-center">
           <div className="md:w-1/3">
             <Image
               src={"/assets/home/event-image-black.png"}
@@ -103,8 +103,8 @@ export default function Home() {
             />
           </div>
 
-          <div className="md:w-1/2">
-            <h1 className="font-bold text-3xl md:text-[40px]/[72px] text-white">
+          <div className="md:w-1/2 text-center md:text-left">
+            <h1 className="font-bold text-2xl md:text-[40px]/[72px] text-white mb-6 md:mb-0">
               IYF is an <span className="text-[#22CA38]">national</span> level
               organization, working across India. It aims to guide students and{" "}
               <span className="text-[#22CA38]">youths</span> in the light of
@@ -116,7 +116,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full max-w-[1600px] mx-auto px-5 md:px-10 2xl:px-6 py-12 lg:py-20 space-y-20">
+      <section className="w-full max-w-[1600px] mx-auto px-5 md:px-10 2xl:px-6 py-12 lg:py-20 space-y-16 lg:space-y-20">
         <MagzineSwiper magazines={magazines} />
         <CampaignsSection campaigns={campaigns} />
         <EventosSection eventos={eventosData} />

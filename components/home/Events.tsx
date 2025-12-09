@@ -18,13 +18,13 @@ interface EventosSectionProps {
 const EventosSection: FC<EventosSectionProps> = ({ eventos }) => {
   return (
     <section className="w-full">
-      <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12 gap-4 md:gap-6">
         <div>
           <div className="flex items-center gap-2 mb-3">
             <span className="w-8 h-[2px] bg-[#22CA38]"></span>
             <span className="text-[#22CA38] font-bold tracking-widest uppercase text-sm">Latest Updates</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-black">Events & Activities</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-black mt-2">Events & Activities</h2>
         </div>
       </div>
 
