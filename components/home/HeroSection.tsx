@@ -13,9 +13,9 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden py-0 bg-white">
+    <section className="relative w-full overflow-hidden pt-[120px] md:pt-[90px] pb-0 bg-white">
       <motion.div
-        className="relative w-full max-w-[1600px] mx-auto px-6 lg:px-10 pb-12 flex items-center justify-between flex-col lg:flex-row"
+        className="relative w-full max-w-[1600px] mx-auto px-5 lg:px-10 pb-8 lg:pb-12 flex items-center justify-between flex-col lg:flex-row"
         initial={{ opacity: 0 }}
         animate={isMounted ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 1, ease: "easeInOut" }}
@@ -27,13 +27,13 @@ export default function HeroSection() {
           animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <h1 className="italic font-bold text-black text-xl sm:text-3xl xl:text-4xl 2xl:text-5xl leading-tight tracking-[4px]">
+          <h1 className="italic font-bold text-black text-lg sm:text-2xl xl:text-4xl 2xl:text-5xl leading-tight tracking-[2px] sm:tracking-[4px]">
             <span className="block text-black">They were</span>
-            <span className="block text-[#22CA38] font-black text-4xl sm:text-5xl xl:text-[72px] 2xl:text-[88px]">
+            <span className="block text-[#22CA38] font-black text-3xl sm:text-5xl xl:text-[72px] 2xl:text-[88px] leading-none sm:leading-tight my-2 sm:my-0">
               YOUTHS
             </span>
             <span className="block text-black">
-              who believed in their <br />
+              who believed in their <br className="hidden sm:block" />
               Lord, and We increased them in guidance.
             </span>
           </h1>

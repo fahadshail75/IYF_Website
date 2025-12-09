@@ -57,15 +57,15 @@ const initiatives = [
 
 export default function OurInitiatives() {
   return (
-    <section className="relative w-full py-16 lg:py-24 bg-white overflow-hidden">
+    <section className="relative w-full py-12 lg:py-24 bg-white overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 gap-4 md:gap-6">
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className="w-8 h-[2px] bg-[#22CA38]"></span>
               <span className="text-[#22CA38] font-bold tracking-widest uppercase text-sm">Our Ecosystem</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-black">Initiatives & Platforms</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-black mt-2">Initiatives & Platforms</h2>
           </div>
 
           <p className="text-gray-500 max-w-md text-lg">
@@ -79,7 +79,7 @@ export default function OurInitiatives() {
               key={idx}
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
-              className={`group relative p-8 rounded-3xl border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${item.color} ${item.hover}`}
+              className={`group relative p-6 md:p-8 rounded-3xl border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${item.color} ${item.hover}`}
             >
               <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <ArrowUpRight className="w-5 h-5 text-gray-400" />
