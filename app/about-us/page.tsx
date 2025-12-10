@@ -50,9 +50,9 @@ const page = () => {
   ];
 
   return (
-    <main className="max-w-[1600px] bg-white w-full px-4 sm:px-5 md:px-10 2xl:px-20 mx-auto pt-[120px] md:pt-[100px]">
+    <main className="max-w-[1600px] bg-white w-full px-4 sm:px-5 md:px-10 2xl:px-20 mx-auto">
       <div className="max-w-6xl mx-auto px-4 md:px-8 text-center mt-8">
-        <h2 className="font-extrabold bg-[#22CA38] py-1 px-3 text-lg sm:text-xl md:text-3xl lg:text-4xl mb-3 tracking-wide inline-flex items-center gap-2 w-fit mx-auto">
+  <h2 className="font-extrabold bg-[#22CA38] py-1 px-3 text-lg sm:text-xl md:text-3xl lg:text-4xl mb-3 tracking-wide inline-flex items-center gap-2 w-fit mx-auto">
           <Users size={18} className="text-black" />
           <span className="text-black">About Us</span>
         </h2>

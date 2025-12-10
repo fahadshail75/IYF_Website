@@ -10,10 +10,10 @@ interface ComingSoonProps {
   category?: string;
 }
 
-const ComingSoon: FC<ComingSoonProps> = ({
-  title,
+const ComingSoon: FC<ComingSoonProps> = ({ 
+  title, 
   description = "We're working hard to bring you this page. Stay tuned for updates!",
-  category
+  category 
 }) => {
   const isTitleUrdu = /[\u0600-\u06FF]/.test(title || "");
   const isTitleBangla = /[\u0980-\u09FF]/.test(title || "");
@@ -25,7 +25,7 @@ const ComingSoon: FC<ComingSoonProps> = ({
       style={{
         marginTop: "calc(-1 * var(--header-height, 0px))",
         minHeight: "calc(100vh - var(--header-height, 0px))",
-        paddingTop: "140px",
+        paddingTop: "calc(var(--header-height, 0px) + 2rem)",
         paddingBottom: "4rem",
       }}
     >
@@ -68,8 +68,8 @@ const ComingSoon: FC<ComingSoonProps> = ({
 
         {/* Call to Action */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/"
+          <Link 
+            href="/" 
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#22CA38] text-white rounded-lg hover:bg-[#1ea832] transition-colors duration-200 font-medium"
           >
             <ArrowLeft size={18} />
