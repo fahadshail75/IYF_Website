@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
  
@@ -105,4 +106,12 @@ body {
 
 .solaiman-lipi-font {
   font-family: 'SolaimanLipi', sans-serif !important;
+}
+
+
+@layer{
+  .prose{
+    max-width: 100% !important;
+    padding: 0;
+  }
 }
