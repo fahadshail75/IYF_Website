@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import { organizationSchema, websiteSchema, educationalOrganizationSchema } from "@/lib/structured-data";
+import { Toaster } from "react-hot-toast";
 
 const monteserrat = Montserrat({
   variable: "--font-monteserrat",
@@ -116,6 +117,7 @@ export default function RootLayout({
         <main className="pt-4 sm:pt-6 md:pt-8">
           {children}
         </main>
+        <Toaster position="top-center" reverseOrder={false} />
 
         <Footer />
       </body>

@@ -11,6 +11,13 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'orangered-zebra-917241.hostingersite.com',
+        pathname: '/**',
+      },
+    ],
   },
 
   // Compression for better performance
