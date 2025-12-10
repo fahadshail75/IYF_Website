@@ -395,5 +395,5 @@ const IslamicBooksPage: FC = () => {
   );
 };
 
-// Export component as default for Next.js page routing
+
 export default IslamicBooksPage;
